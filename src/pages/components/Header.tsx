@@ -4,7 +4,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="flex w-full items-center rounded-t-xl bg-white py-3 px-4">
+    <div className="flex w-full items-center rounded-t-xl bg-white py-3 px-4 dark:bg-[color:var(--bg-header-dark-theme)]">
       <Link href={"https://mail.ru/"}>
         <Image
           className="hidden md:block"

@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-main-dark-theme: #19191a;
+  --bg-header-dark-theme: #232324;
+}
+
 @layer base {
   body {
-    @apply font-sans text-[15px] font-bold leading-5 text-[#333333];
+    @apply font-sans text-[15px] font-bold leading-5 text-[#333333] dark:text-white;
   }
 
   #__next {

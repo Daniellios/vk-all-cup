@@ -106,7 +106,7 @@ const Sidebar = () => {
           <p className="sidebar__link_title"> Корзина</p>
         </Link>
 
-        <hr className="my-[8px] h-[1px] w-full bg-[#00103D]/10" />
+        <hr className="my-[8px] hidden h-[1px] w-full bg-[#00103D]/10 md:block" />
 
         <button className="hover:element-active hidden items-center gap-[15px] rounded-lg py-2 pl-3 font-normal text-[#333333]/40 md:flex">
           <div className="flex h-4 w-4 items-center justify-center">
