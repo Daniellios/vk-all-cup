@@ -6,6 +6,7 @@
   --bg-main-dark-theme: #19191a;
   --bg-header-dark-theme: #232324;
   --blue: #005ff9;
+  --text-sub-dark-theme: #8c8e94;
 }
 
 @layer base {
@@ -14,7 +15,7 @@
   }
 
   #__next {
-    @apply flex h-full w-screen justify-center bg-slate-500;
+    @apply flex h-full w-screen justify-center;
   }
 }
 
@@ -22,26 +23,32 @@
   .sidebar__link_title {
     @apply hidden md:block;
   }
+
+  .email__list_item {
+    @apply flex h-12 w-full cursor-pointer items-center whitespace-nowrap rounded-lg pl-1 font-bold  dark:bg-[#232324] dark:hover:bg-[#2C2C2D];
+  }
+  .email__list_item:hover .email__item_picture {
+  }
+
+  .email__list_item_icon {
+    @apply flex h-6 w-6 items-center justify-center;
+  }
 }
 
 @layer utilities {
-  .test img {
-    color: red;
-  }
-
   .sidebar__link {
-    @apply flex  h-9 w-full cursor-pointer items-center justify-center rounded-lg font-normal hover:bg-[#00103D]/10 md:justify-start md:gap-[10px] md:p-2   md:pl-3 md:pr-2;
+    @apply flex  h-9 w-full cursor-pointer items-center justify-center rounded-lg font-normal hover:bg-[#00103D]/10 dark:hover:bg-[#222223]  md:justify-start md:gap-[10px] md:p-2   md:pl-3 md:pr-2;
   }
 
-  .sidevar__link-active {
-    @apply font-bold;
+  .sidebar__link-active {
+    @apply bg-[#00103D]/10 font-bold dark:bg-[#3C3C3D];
   }
 
   .element-active {
-    @apply bg-[#00103D]/10;
+    @apply bg-[#00103D]/10 dark:bg-[#3C3C3D];
   }
 
   .element-hover {
-    @apply bg-[#00103D]/5;
+    @apply hover:bg-[#00103D]/5 hover:dark:bg-[#222223];
   }
 }
