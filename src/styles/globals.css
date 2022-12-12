@@ -5,11 +5,12 @@
 :root {
   --bg-main-dark-theme: #19191a;
   --bg-header-dark-theme: #232324;
+  --blue: #005ff9;
 }
 
 @layer base {
   body {
-    @apply font-sans text-[15px] font-bold leading-5 text-[#333333] dark:text-white;
+    @apply font-sans text-[15px] font-bold leading-5 text-[#333333] transition-all dark:text-white;
   }
 
   #__next {
@@ -24,6 +25,10 @@
 }
 
 @layer utilities {
+  .test img {
+    color: red;
+  }
+
   .sidebar__link {
     @apply flex  h-9 w-full cursor-pointer items-center justify-center rounded-lg font-normal hover:bg-[#00103D]/10 md:justify-start md:gap-[10px] md:p-2   md:pl-3 md:pr-2;
   }

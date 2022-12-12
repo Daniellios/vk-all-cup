@@ -1,19 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import MainLogo from "../../svg/MainLogo";
 
 const Header = () => {
   return (
-    <div className="flex w-full items-center rounded-t-xl bg-white py-3 px-4 dark:bg-[color:var(--bg-header-dark-theme)]">
-      <Link href={"https://mail.ru/"}>
-        <Image
-          className="hidden md:block"
-          src={"/assets/logo.svg"}
-          alt="mail ru logo"
-          width={96}
-          height={32}
-        ></Image>
-      </Link>
+    <div className="flex w-full items-center rounded-t-xl bg-white py-3 px-4 shadow-md shadow-[#00103D]/10 dark:bg-[color:var(--bg-header-dark-theme)]">
+      <MainLogo></MainLogo>
 
       <Link href={"https://mail.ru/"}>
         <Image
