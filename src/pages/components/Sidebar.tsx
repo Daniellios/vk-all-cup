@@ -103,7 +103,9 @@ const Sidebar = () => {
         <div className="flex h-5 w-5 items-center justify-center">
           <Theme />
         </div>
-        <p className="sidebar__link_title "> Тема: светлая</p>
+        <p className="sidebar__link_title ">
+          {theme === "dark" ? "Тема: темная" : "Тема: светлая"}
+        </p>
       </button>
     </div>
   );
