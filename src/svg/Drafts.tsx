@@ -22,8 +22,8 @@ const Drafts = () => {
         className="fill-[#333333] dark:fill-white"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M0 13C0 14.6569 1.34315 16 3 16H11C12.6569 16 14 14.6569 14 13V3C14 1.34315 12.6569 0 11 0H3C1.34315 0 0 1.34315 0 3V13ZM3 14C2.44772 14 2 13.5523 2 13V3C2 2.44771 2.44772 2 3 2H11C11.5523 2 12 2.44772 12 3V13C12 13.5523 11.5523 14 11 14H3Z"
         className="fill-[#333333] dark:fill-white"
       />

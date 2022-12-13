@@ -14,8 +14,8 @@ const Incoming = () => {
         className="fill-[#333333] dark:fill-white"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M0 3C0 1.34315 1.34315 0 3 0H13C14.6569 0 16 1.34315 16 3V11C16 12.6569 14.6569 14 13 14H3C1.34315 14 0 12.6569 0 11V3ZM3 2C2.44772 2 2 2.44772 2 3V11C2 11.5523 2.44772 12 3 12H13C13.5523 12 14 11.5523 14 11V3C14 2.44772 13.5523 2 13 2H3Z"
         className="fill-[#333333] dark:fill-white"
       />

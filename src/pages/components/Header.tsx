@@ -25,7 +25,7 @@ const Header = () => {
         </>
       ) : (
         <Link href={"/"} className="hover:underline">
-          <div className="flex h-10 items-center gap-3">
+          <div className="flex h-8 items-center gap-3">
             <LeftArrow></LeftArrow>
             <p className="font-normal">Вернуться</p>
           </div>

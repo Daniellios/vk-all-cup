@@ -1,25 +1,44 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import Attach from "../../svg/categories/Attach";
 import Finance from "../../svg/categories/Finance";
+import Error from "../../svg/Error";
 import Mark from "../../svg/Mark";
 import CheckBox from "./CheckBox";
 
-const MailLetter = () => {
+export interface IMailLetter {
+  height: number;
+  isREAD?: boolean;
+  isImportant?: boolean;
+}
+
+const MailLetter: FC<IMailLetter> = ({
+  height,
+  isREAD = false,
+  isImportant = false,
+}) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
-  const [isRead, setIsRead] = useState<boolean>(true);
-  const handleSelect = () => {
+  // const [isRead, setIsRead] = useState<boolean>(true);
+  const [isMarked, setIsMarked] = useState<boolean>(false);
+  const handleSelect = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
     setIsSelected(!isSelected);
   };
 
+  // const handleMark = () => {};
+
   //TODO add checked and marked
   return (
-    <Link href={"letter/2"} className="select-none">
+    <Link
+      href={"letter/2"}
+      className="email__list_link"
+      style={{ top: height }}
+    >
       <div className="email__list_item">
         {/* STATUS */}
         <div className="mr-1 flex h-12 w-7 min-w-[28px] items-center justify-center">
-          {isRead ? (
+          {isREAD ? (
             <>
               <div className="email__read_status bg-transparent"></div>
             </>
@@ -30,14 +49,18 @@ const MailLetter = () => {
 
         {/* SENDER */}
         <div className="flex items-center space-x-3">
-          <div className="flex h-12 w-8 min-w-[32px] items-center ">
-            <Image
-              className="email__item_picture"
-              src={"/assets/person.png"}
-              width={32}
-              height={32}
-              alt="sender profile picture"
-            ></Image>
+          <div className="relative z-10 flex h-12 w-8 min-w-[32px] items-center">
+            {isSelected ? (
+              <></>
+            ) : (
+              <Image
+                className="email__item_picture"
+                src={"/assets/person.png"}
+                width={32}
+                height={32}
+                alt="sender profile picture"
+              ></Image>
+            )}
             <CheckBox select={handleSelect} isChecked={isSelected} />
           </div>
         </div>
@@ -45,9 +68,15 @@ const MailLetter = () => {
         {/* MAIL CONTENT */}
         <div className="mail__letter_preview">
           <p className="mr-[93px] ">Игорь Коньков</p>
-          <div className="flex h-12 w-12 items-center justify-center ">
-            <Mark></Mark>
+          <div className="flex h-12 w-12 min-w-[48px] items-center justify-center">
+            <div className="email__list_item_mark">
+              <Mark></Mark>
+            </div>
+            <div className="flex h-12 w-12 min-w-[48px] items-center justify-center pr-2">
+              {isImportant ? <Error></Error> : ""}
+            </div>
           </div>
+
           <div className="flex w-full max-w-[1284px] items-center gap-2">
             <p>Отчет о финансовых результатах</p>
             <div className="w-full overflow-hidden truncate text-ellipsis whitespace-nowrap pr-6">
@@ -61,25 +90,25 @@ const MailLetter = () => {
               </p>
             </div>
           </div>
+
+          {/* EMAIL SHORT INFO  */}
+          <div className="flex h-full w-[116px] items-center justify-end">
+            <div className="flex h-full items-center">
+              <div className="email__list_item_icon">
+                <Finance></Finance>
+              </div>
+              <div className="email__list_item_icon">
+                <Attach></Attach>
+              </div>
+            </div>
+            <div className="flex h-full w-16 items-center justify-end">
+              <p className="font-normal text-[color:var(--text-sub-dark-theme)] ">
+                17:41
+              </p>
+            </div>
+          </div>
         </div>
         {/* MAIL CONTENT END */}
-
-        {/* EMAIL SHORT INFO  */}
-        <div className="flex h-full w-[116px] items-center justify-end">
-          <div className="flex h-full items-center">
-            <div className="email__list_item_icon">
-              <Finance></Finance>
-            </div>
-            <div className="email__list_item_icon">
-              <Attach></Attach>
-            </div>
-          </div>
-          <div className="flex h-full w-16 items-center justify-end">
-            <p className="font-normal text-[color:var(--text-sub-dark-theme)] ">
-              17:41
-            </p>
-          </div>
-        </div>
       </div>
     </Link>
   );

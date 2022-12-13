@@ -2,12 +2,15 @@ import React, { FC } from "react";
 
 interface ICheckbox {
   isChecked: boolean;
-  select: () => void;
+  select: any;
 }
 
 const CheckBox: FC<ICheckbox> = ({ select, isChecked }) => {
   return (
-    <div className="checkbox" onClick={select}>
+    <div
+      className={isChecked ? "checkbox flex " : "checkbox "}
+      onClick={select}
+    >
       <div
         className={`flex h-4 w-4 items-center justify-center rounded border border-[#4e4e4f] ${
           isChecked ? "bg-[color:var(--blue)]" : ""
