@@ -9,6 +9,7 @@
   --link-blue: #589bff;
   --text-sub-dark-theme: #8c8e94;
   --border-white-theme: #e0e2e7;
+  --red: #ff4550;
 }
 
 @layer base {

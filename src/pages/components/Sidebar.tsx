@@ -20,6 +20,8 @@ const Sidebar = () => {
 
   const { theme, setTheme } = useTheme();
 
+  console.log(theme);
+
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
@@ -103,9 +105,11 @@ const Sidebar = () => {
         <div className="flex h-5 w-5 items-center justify-center">
           <Theme />
         </div>
-        <p className="sidebar__link_title ">
-          {theme === "dark" ? "Тема: темная" : "Тема: светлая"}
-        </p>
+        {theme && theme === "dark" ? (
+          <p className="sidebar__link_title ">Тема: темная</p>
+        ) : (
+          <p className="sidebar__link_title ">Тема: светлая</p>
+        )}
       </button>
     </div>
   );

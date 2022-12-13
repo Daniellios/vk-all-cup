@@ -6,32 +6,38 @@ import Finance from "../../svg/categories/Finance";
 import Error from "../../svg/Error";
 import Mark from "../../svg/Mark";
 import CheckBox from "./CheckBox";
+import EmailMark from "./EmailMark";
 
 export interface IMailLetter {
   height: number;
   isREAD?: boolean;
   isImportant?: boolean;
+  id: string;
 }
 
 const MailLetter: FC<IMailLetter> = ({
   height,
   isREAD = false,
   isImportant = false,
+  id,
 }) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
-  // const [isRead, setIsRead] = useState<boolean>(true);
   const [isMarked, setIsMarked] = useState<boolean>(false);
+
   const handleSelect = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     setIsSelected(!isSelected);
   };
 
-  // const handleMark = () => {};
+  const handleMark = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    setIsMarked(!isMarked);
+  };
 
   //TODO add checked and marked
   return (
     <Link
-      href={"letter/2"}
+      href={`letter/${id}`}
       className="email__list_link"
       style={{ top: height }}
     >
@@ -69,9 +75,7 @@ const MailLetter: FC<IMailLetter> = ({
         <div className="mail__letter_preview">
           <p className="mr-[93px] ">Игорь Коньков</p>
           <div className="flex h-12 w-12 min-w-[48px] items-center justify-center">
-            <div className="email__list_item_mark">
-              <Mark></Mark>
-            </div>
+            <EmailMark mark={handleMark} isMarked={isMarked}></EmailMark>
             <div className="flex h-12 w-12 min-w-[48px] items-center justify-center pr-2">
               {isImportant ? <Error></Error> : ""}
             </div>
