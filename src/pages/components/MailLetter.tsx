@@ -4,7 +4,6 @@ import React, { FC, useState } from "react";
 import Attach from "../../svg/categories/Attach";
 import Finance from "../../svg/categories/Finance";
 import Error from "../../svg/Error";
-import Mark from "../../svg/Mark";
 import CheckBox from "./CheckBox";
 import EmailMark from "./EmailMark";
 
@@ -34,7 +33,6 @@ const MailLetter: FC<IMailLetter> = ({
     setIsMarked(!isMarked);
   };
 
-  //TODO add checked and marked
   return (
     <Link
       href={`letter/${id}`}
@@ -81,10 +79,10 @@ const MailLetter: FC<IMailLetter> = ({
             </div>
           </div>
 
-          <div className="flex w-full max-w-[1284px] items-center gap-2">
+          <div className="flex w-full items-center gap-2">
             <p>Отчет о финансовых результатах</p>
-            <div className="w-full overflow-hidden truncate text-ellipsis whitespace-nowrap pr-6">
-              <p className="font-normal text-[color:var(--text-sub-dark-theme)] ">
+            <div className="w-full ">
+              <p className="max-w-[930px] truncate font-normal text-[color:var(--text-sub-dark-theme)] ">
                 Добрый день, коллеги! Напрвялю вам бланк отчета о финансовых
                 результатах и шаблон с примером его заполнения. Прошу
                 внимательно внести все данные в бланк бухгалтерского отчета и
@@ -96,7 +94,7 @@ const MailLetter: FC<IMailLetter> = ({
           </div>
 
           {/* EMAIL SHORT INFO  */}
-          <div className="flex h-full w-[116px] items-center justify-end">
+          <div className="flex h-full w-full items-center justify-end">
             <div className="flex h-full items-center">
               <div className="email__list_item_icon">
                 <Finance></Finance>
@@ -105,14 +103,13 @@ const MailLetter: FC<IMailLetter> = ({
                 <Attach></Attach>
               </div>
             </div>
-            <div className="flex h-full w-16 items-center justify-end">
+            <div className="flex h-full w-14 items-center justify-end">
               <p className="font-normal text-[color:var(--text-sub-dark-theme)] ">
                 17:41
               </p>
             </div>
           </div>
         </div>
-        {/* MAIL CONTENT END */}
       </div>
     </Link>
   );
