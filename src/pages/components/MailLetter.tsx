@@ -71,7 +71,7 @@ const MailLetter: FC<IMailLetter> = ({
 
         {/* MAIL CONTENT */}
         <div className="mail__letter_preview">
-          <p className="mr-[93px] ">Игорь Коньков</p>
+          <p className="mr-10 ">Игорь Коньков</p>
           <div className="flex h-12 w-12 min-w-[48px] items-center justify-center">
             <EmailMark mark={handleMark} isMarked={isMarked}></EmailMark>
             <div className="flex h-12 w-12 min-w-[48px] items-center justify-center pr-2">
@@ -79,10 +79,11 @@ const MailLetter: FC<IMailLetter> = ({
             </div>
           </div>
 
-          <div className="flex w-full items-center gap-2">
+          <div className="flex w-[calc(100%_-_30%)] items-center gap-2">
             <p>Отчет о финансовых результатах</p>
-            <div className="w-full ">
-              <p className="max-w-[930px] truncate font-normal text-[color:var(--text-sub-dark-theme)] ">
+            <div className="w-[calc(100%_-_70%)]">
+              {/* TODO- make calc for widht to solve the issue? */}
+              <p className="w-full truncate font-normal text-[color:var(--text-sub-dark-theme)] ">
                 Добрый день, коллеги! Напрвялю вам бланк отчета о финансовых
                 результатах и шаблон с примером его заполнения. Прошу
                 внимательно внести все данные в бланк бухгалтерского отчета и
@@ -94,7 +95,7 @@ const MailLetter: FC<IMailLetter> = ({
           </div>
 
           {/* EMAIL SHORT INFO  */}
-          <div className="flex h-full w-full items-center justify-end">
+          <div className="flex h-full w-auto items-center justify-end self-end">
             <div className="flex h-full items-center">
               <div className="email__list_item_icon">
                 <Finance></Finance>

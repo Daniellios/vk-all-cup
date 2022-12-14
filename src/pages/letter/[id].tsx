@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import DownLoad from "../../svg/DownLoad";
 import Error from "../../svg/Error";
 
 const Letter = () => {
@@ -22,7 +23,6 @@ const Letter = () => {
 
           <div className="flex h-[42px] w-8 min-w-[32px] items-center ">
             <Image
-              className="email__item_picture"
               src={"/assets/person.png"}
               width={32}
               height={32}
@@ -55,18 +55,37 @@ const Letter = () => {
           <div className="flex w-full flex-col gap-2">
             {/* ATTACHMENTS */}
             <div className="flex gap-[10px]">
-              <Image
-                src={"/assets/attach-img.png"}
-                width={256}
-                height={190}
-                alt="imgae"
-              ></Image>
-              <Image
-                src={"/assets/attach-img2.png"}
-                width={256}
-                height={190}
-                alt="imgae"
-              ></Image>
+              <div className="email__item_attach_picture">
+                <Image
+                  className="email__item_attach_picture"
+                  src={"/assets/attach-img.png"}
+                  width={256}
+                  height={190}
+                  alt="imgae"
+                ></Image>
+                <div className="email__item_attach_picture_hover">
+                  <DownLoad></DownLoad>
+                  <p className="font-normal text-[#2C2D2E] hover:underline dark:text-[#D9DADD]">
+                    Скачать
+                  </p>
+                </div>
+              </div>
+
+              <div className="email__item_attach_picture">
+                <Image
+                  className="email__item_attach_picture"
+                  src={"/assets/attach-img2.png"}
+                  width={256}
+                  height={190}
+                  alt="imgae"
+                ></Image>
+                <div className="email__item_attach_picture_hover">
+                  <DownLoad></DownLoad>
+                  <p className="font-normal text-[#2C2D2E] hover:underline dark:text-[#D9DADD]">
+                    Скачать
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="flex items-center text-[13px] font-normal">

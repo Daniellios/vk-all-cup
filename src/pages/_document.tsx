@@ -1,7 +1,14 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import React from "react";
+import type { DocumentContext, DocumentInitialProps } from "next/document";
 
-export default class MyDocument extends Document {
+class MyDocument extends Document {
+  static async getInitialProps(
+    ctx: DocumentContext
+  ): Promise<DocumentInitialProps> {
+    const initialProps = await Document.getInitialProps(ctx);
+
+    return initialProps;
+  }
   render() {
     return (
       <Html>
@@ -14,3 +21,5 @@ export default class MyDocument extends Document {
     );
   }
 }
+
+export default MyDocument;

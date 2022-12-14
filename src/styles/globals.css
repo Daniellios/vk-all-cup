@@ -71,7 +71,19 @@
   }
 
   .mail__letter_preview {
-    @apply ml-3 flex h-full w-[calc(100%_-_96px)] items-center space-x-2 border border-0 border-b-[1px] border-[color:var(--border-white-theme)]  dark:border-[color:var(--bg-main-dark-theme)];
+    @apply ml-3 flex h-full w-[calc(100%_-_96px)] items-center  justify-between space-x-2 border border-0 border-b-[1px] border-[color:var(--border-white-theme)]  dark:border-[color:var(--bg-main-dark-theme)];
+  }
+
+  .email__item_attach_picture {
+    @apply relative hover:cursor-pointer;
+  }
+
+  .email__item_attach_picture:hover .email__item_attach_picture_hover {
+    @apply flex;
+  }
+
+  .email__item_attach_picture_hover {
+    @apply absolute bottom-0 left-0 right-0  hidden h-10 items-center justify-center  gap-2 rounded-b-xl  bg-gradient-to-t from-white/90 to-white/10  dark:from-[#2c2c2d]/90 dark:to-[#2c2c2d]/10;
   }
 
   .checkbox {

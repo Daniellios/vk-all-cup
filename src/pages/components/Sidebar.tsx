@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useTheme } from "next-themes";
 import Trash from "../../svg/Trash";
@@ -18,12 +18,14 @@ import Add from "../../svg/Add";
 const Sidebar = () => {
   const router = useRouter();
 
+  const [currentTheme, setCurrentTheme] = useState<string>("");
   const { theme, setTheme } = useTheme();
 
-  console.log(theme);
+  useEffect(() => setCurrentTheme("dark"), []);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+    setCurrentTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -105,7 +107,7 @@ const Sidebar = () => {
         <div className="flex h-5 w-5 items-center justify-center">
           <Theme />
         </div>
-        {theme && theme === "dark" ? (
+        {currentTheme && currentTheme === "dark" ? (
           <p className="sidebar__link_title ">Тема: темная</p>
         ) : (
           <p className="sidebar__link_title ">Тема: светлая</p>
