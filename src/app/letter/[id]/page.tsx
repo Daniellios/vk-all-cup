@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import DownLoad from "../../svg/DownLoad";
-import Error from "../../svg/Error";
+import DownLoad from "../../../svg/DownLoad";
+import Error from "../../../svg/Error";
 
 const Letter = () => {
   return (

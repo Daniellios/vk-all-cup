@@ -1,8 +1,6 @@
-import Image from "next/image";
+"use client";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-
 import { useTheme } from "next-themes";
 import Trash from "../../svg/Trash";
 import Theme from "../../svg/Theme";
@@ -14,12 +12,13 @@ import Important from "../../svg/Important";
 import Incoming from "../../svg/Incoming";
 import Compose from "../../svg/Compose";
 import Add from "../../svg/Add";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 const Sidebar = () => {
-  const router = useRouter();
-
   const [currentTheme, setCurrentTheme] = useState<string>("");
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
+  console.log(pathname);
 
   useEffect(() => setCurrentTheme("dark"), []);
 
@@ -41,49 +40,84 @@ const Sidebar = () => {
           </p>
         </button>
 
-        <Link href={"#"} className="sidebar__link sidebar__link-active">
+        <Link
+          href={"/"}
+          className={`sidebar__link  ${
+            pathname === "/" ? "sidebar__link-active" : ""
+          }`}
+        >
           <div className="flex h-5 w-5 items-center justify-center">
             <Incoming />
           </div>
           <p className="sidebar__link_title"> Входящиe</p>
         </Link>
 
-        <Link href={"#"} className="sidebar__link">
+        <Link
+          href={"/important"}
+          className={`sidebar__link  ${
+            pathname === "/important" ? "sidebar__link-active" : ""
+          }`}
+        >
           <div className="flex h-5 w-5 items-center justify-center">
             <Important />
           </div>
           <p className="sidebar__link_title"> Важное</p>
         </Link>
 
-        <Link href={"#"} className="sidebar__link">
+        <Link
+          href={"/sent"}
+          className={`sidebar__link  ${
+            pathname === "/sent" ? "sidebar__link-active" : ""
+          }`}
+        >
           <div className="flex h-5 w-5 items-center justify-center">
             <Sent />
           </div>
           <p className="sidebar__link_title"> Отправленные</p>
         </Link>
 
-        <Link href={"#"} className="sidebar__link">
+        <Link
+          href={"/drafts"}
+          className={`sidebar__link  ${
+            pathname === "/drafts" ? "sidebar__link-active" : ""
+          }`}
+        >
           <div className="flex h-5 w-5 items-center justify-center">
             <Drafts />
           </div>
           <p className="sidebar__link_title"> Черновики</p>
         </Link>
 
-        <Link href={"#"} className="sidebar__link">
+        <Link
+          href={"/archive"}
+          className={`sidebar__link  ${
+            pathname === "/archive" ? "sidebar__link-active" : ""
+          }`}
+        >
           <div className="flex h-5 w-5 items-center justify-center">
             <Archive />
           </div>
           <p className="sidebar__link_title"> Архив</p>
         </Link>
 
-        <Link href={"#"} className="sidebar__link">
+        <Link
+          href={"/spam"}
+          className={`sidebar__link  ${
+            pathname === "/spam" ? "sidebar__link-active" : ""
+          }`}
+        >
           <div className="flex h-5 w-5 items-center justify-center">
             <Spam />
           </div>
           <p className="sidebar__link_title"> Спам</p>
         </Link>
 
-        <Link href={"#"} className="sidebar__link">
+        <Link
+          href={"/trash"}
+          className={`sidebar__link  ${
+            pathname === "/trash" ? "sidebar__link-active" : ""
+          }`}
+        >
           <div className="flex h-5 w-5 items-center justify-center">
             <Trash />
           </div>

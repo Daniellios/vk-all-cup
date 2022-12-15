@@ -14,11 +14,15 @@
 
 @layer base {
   body {
-    @apply overflow-x-hidden font-sans text-[15px] font-bold leading-5 text-[#333333] transition-all dark:text-white;
+    @apply flex h-full w-screen justify-center  overflow-x-hidden font-sans text-[15px] font-bold leading-5 text-[#333333] transition-all dark:text-white;
   }
 
   #__next {
     @apply flex h-full w-screen justify-center overflow-x-hidden;
+  }
+
+  [data-nextjs-scroll-focus-boundary] {
+    display: contents;
   }
 }
 

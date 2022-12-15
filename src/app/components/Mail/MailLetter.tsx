@@ -1,23 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useState } from "react";
-import Attach from "../../svg/categories/Attach";
-import Finance from "../../svg/categories/Finance";
-import Error from "../../svg/Error";
-import CheckBox from "./CheckBox";
-import EmailMark from "./EmailMark";
-
-export interface IMailLetter {
-  height: number;
-  isREAD?: boolean;
-  isImportant?: boolean;
-  id: string;
-}
+import Attach from "../../../svg/categories/Attach";
+import Finance from "../../../svg/categories/Finance";
+import Error from "../../../svg/Error";
+import CheckBox from "../CheckBox";
+import EmailMark from "../EmailMark";
+import type { IMailLetter } from "./interfaces";
 
 const MailLetter: FC<IMailLetter> = ({
   height,
-  isREAD = false,
-  isImportant = false,
+  read = false,
+  important = false,
   id,
 }) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
@@ -42,7 +38,7 @@ const MailLetter: FC<IMailLetter> = ({
       <div className="email__list_item">
         {/* STATUS */}
         <div className="mr-1 flex h-12 w-7 min-w-[28px] items-center justify-center">
-          {isREAD ? (
+          {read ? (
             <>
               <div className="email__read_status bg-transparent"></div>
             </>
@@ -75,7 +71,7 @@ const MailLetter: FC<IMailLetter> = ({
           <div className="flex h-12 w-12 min-w-[48px] items-center justify-center">
             <EmailMark mark={handleMark} isMarked={isMarked}></EmailMark>
             <div className="flex h-12 w-12 min-w-[48px] items-center justify-center pr-2">
-              {isImportant ? <Error></Error> : ""}
+              {important ? <Error></Error> : ""}
             </div>
           </div>
 
