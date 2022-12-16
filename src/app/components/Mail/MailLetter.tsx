@@ -89,31 +89,31 @@ const MailLetter: FC<IMailLetter> = ({
         </div>
 
         {/* MAIL CONTENT */}
-        <div className="mail__letter_preview">
-          <div className="flex w-[22%] min-w-[22%] items-center pr-2">
-            <p>{`${author.name} ${author.surname}`}</p>
-          </div>
+        <div className="mail__letter_preview_wrap">
+          <div className="mail__letter_preview_content">
+            <div className="flex w-[22%] min-w-[22%] items-center pr-2">
+              <p>{`${author.name} ${author.surname}`}</p>
+            </div>
 
-          <div className="flex w-8 min-w-[32px] items-center pr-2">
-            {bookmark ? (
-              <EmailMark mark={handleMark} isMarked={isMarked}></EmailMark>
-            ) : (
-              <div className="email__list_item_important">
-                {important ? <Error></Error> : ""}
-              </div>
-            )}
-          </div>
+            <div className="flex w-8 min-w-[32px] items-center pr-2">
+              {bookmark ? (
+                <EmailMark mark={handleMark} isMarked={isMarked}></EmailMark>
+              ) : (
+                <div className="email__list_item_important">
+                  {important ? <Error></Error> : ""}
+                </div>
+              )}
+            </div>
 
-          <div className="flex h-[48px] flex-1 items-center truncate pr-2">
-            <p className="whitespace-nowrap">{title}</p>
-            <p className="ml-3 whitespace-nowrap font-normal text-[color:var(--text-sub-dark-theme)] ">
-              {text}
-            </p>
-          </div>
+            <div className="flex h-[48px] flex-1 items-center truncate pr-2">
+              <p>{title}</p>
+              <p className="ml-3  font-normal text-[color:var(--text-sub-dark-theme)] ">
+                {text}
+              </p>
+            </div>
 
-          {/* EMAIL SHORT INFO  */}
-          <div className="flex h-full w-auto items-center justify-end self-end">
-            <div className="flex h-full items-center">
+            {/* EMAIL SHORT INFO  */}
+            <div className="flex h-full min-w-[24px] flex-shrink-0 items-center pr-2">
               {categories.map((categoty, idx: number) => {
                 if (flag && categoty.title === flag) {
                   if (doc) {
@@ -135,8 +135,9 @@ const MailLetter: FC<IMailLetter> = ({
                 }
               })}
             </div>
-            <div className="h-full w-[44px] min-w-[44px] items-center text-right">
-              <p className="font-normal text-[color:var(--text-sub-dark-theme)] ">
+
+            <div className="flex h-full w-[44px] min-w-[44px] items-center justify-end whitespace-nowrap ">
+              <p className="text-right text-[13px] font-normal text-[color:var(--text-sub-dark-theme)] ">
                 {fromatDate(date)}
               </p>
             </div>

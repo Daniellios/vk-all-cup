@@ -36,7 +36,7 @@
   }
 
   .email__list {
-    @apply relative mt-3 mb-3 flex h-full w-full flex-col  rounded-lg dark:bg-[#232324] 2xl:dark:bg-[#232324];
+    @apply relative mt-3 mb-3 flex h-full w-full flex-col rounded-lg dark:bg-[#232324] 2xl:dark:bg-[#232324];
   }
 
   .email__list_wrapper::-webkit-scrollbar {
@@ -52,7 +52,7 @@
   }
 
   .email__list_link {
-    @apply absolute  left-0 z-0 w-full first:rounded-t-lg last:rounded-b-lg hover:rounded-lg dark:bg-[#232324] dark:hover:bg-[#2C2C2D];
+    @apply absolute left-0 w-full first:rounded-t-lg last:rounded-b-lg hover:rounded-lg dark:bg-[#232324] dark:hover:bg-[#2C2C2D];
   }
 
   .email__list_item {
@@ -114,8 +114,12 @@
     @apply flex items-center gap-2;
   }
 
-  .mail__letter_preview {
-    @apply flex h-full w-full items-center justify-between  space-x-2 border border-0 border-b-[1px] border-[color:var(--border-white-theme)] px-3  dark:border-[color:var(--bg-main-dark-theme)];
+  .mail__letter_preview_wrap {
+    @apply flex h-full w-[calc(100%_-_64px)] items-center justify-between space-x-2  px-3;
+  }
+
+  .mail__letter_preview_content {
+    @apply flex h-full w-full items-center border border-0 border-b-[1px] border-[color:var(--border-white-theme)] dark:border-[color:var(--bg-main-dark-theme)];
   }
 
   .email__item_attach_picture {
