@@ -106,7 +106,6 @@ const MailLetter: FC<IMailLetter> = ({
 
           <div className="flex h-[48px] flex-1 items-center truncate pr-2">
             <p className="whitespace-nowrap">{title}</p>
-
             <p className="ml-3 whitespace-nowrap font-normal text-[color:var(--text-sub-dark-theme)] ">
               {text}
             </p>
