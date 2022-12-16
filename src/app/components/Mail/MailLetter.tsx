@@ -4,13 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useState } from "react";
 import categories from "../../../static/categories";
-import Attach from "../../../svg/categories/Attach";
-import Finance from "../../../svg/categories/Finance";
 import Error from "../../../svg/Error";
 import AttachmentBox from "../AttachmentBox";
 import CheckBox from "../CheckBox";
 import EmailMark from "../EmailMark";
-import type { Base64, IMailLetter } from "./interfaces";
+import type { IMailLetter } from "./interfaces";
 
 const MailLetter: FC<IMailLetter> = ({
   id,
@@ -53,8 +51,6 @@ const MailLetter: FC<IMailLetter> = ({
     }
   };
 
-  const time = new Date(date).getMinutes();
-
   return (
     <Link
       href={`letter/${id}`}
@@ -64,13 +60,9 @@ const MailLetter: FC<IMailLetter> = ({
       <div className="email__list_item">
         {/* STATUS */}
         <div className="mr-1 flex h-12 w-7 min-w-[28px] items-center justify-center">
-          {read ? (
-            <>
-              <div className="email__read_status bg-transparent"></div>
-            </>
-          ) : (
-            <div className="email__read_status"></div>
-          )}
+          <div
+            className={`email__read_status ${read ? "bg-transparent" : ""}`}
+          ></div>
         </div>
 
         {/* SENDER */}
@@ -98,21 +90,26 @@ const MailLetter: FC<IMailLetter> = ({
 
         {/* MAIL CONTENT */}
         <div className="mail__letter_preview">
-          <p className="mr-10 ">{`${author.name} ${author.surname}`}</p>
-          <div className="flex h-12 w-12 min-w-[48px] items-center justify-center">
-            <EmailMark mark={handleMark} isMarked={bookmark}></EmailMark>
-            <div className="flex h-12 w-12 min-w-[48px] items-center justify-center pr-2">
-              {important ? <Error></Error> : ""}
-            </div>
+          <div className="flex w-[22%] min-w-[22%] items-center pr-2">
+            <p>{`${author.name} ${author.surname}`}</p>
           </div>
 
-          <div className="flex w-[calc(100%_-_30%)] items-center gap-2">
-            <p>{title}</p>
-            <div className="w-[calc(100%_-_70%)]">
-              <p className="w-full truncate font-normal text-[color:var(--text-sub-dark-theme)] ">
-                {text}
-              </p>
-            </div>
+          <div className="flex w-8 min-w-[32px] items-center pr-2">
+            {bookmark ? (
+              <EmailMark mark={handleMark} isMarked={isMarked}></EmailMark>
+            ) : (
+              <div className="email__list_item_important">
+                {important ? <Error></Error> : ""}
+              </div>
+            )}
+          </div>
+
+          <div className="flex h-[48px] flex-1 items-center truncate pr-2">
+            <p className="whitespace-nowrap">{title}</p>
+
+            <p className="ml-3 whitespace-nowrap font-normal text-[color:var(--text-sub-dark-theme)] ">
+              {text}
+            </p>
           </div>
 
           {/* EMAIL SHORT INFO  */}
@@ -139,7 +136,7 @@ const MailLetter: FC<IMailLetter> = ({
                 }
               })}
             </div>
-            <div className="flex h-full w-14 items-center justify-end">
+            <div className="h-full w-[44px] min-w-[44px] items-center text-right">
               <p className="font-normal text-[color:var(--text-sub-dark-theme)] ">
                 {fromatDate(date)}
               </p>

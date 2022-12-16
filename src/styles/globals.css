@@ -32,11 +32,11 @@
   }
 
   .email__list_wrapper {
-    @apply h-full w-full overflow-y-auto;
+    @apply h-full w-full overflow-y-auto overflow-x-hidden;
   }
 
   .email__list {
-    @apply relative mt-3 mb-3 flex w-full flex-col rounded-lg dark:bg-[#232324] 2xl:dark:bg-[#232324];
+    @apply relative mt-3 mb-3 flex h-full w-full flex-col  rounded-lg dark:bg-[#232324] 2xl:dark:bg-[#232324];
   }
 
   .email__list_wrapper::-webkit-scrollbar {
@@ -56,7 +56,7 @@
   }
 
   .email__list_item {
-    @apply flex h-12 w-full cursor-pointer items-center  whitespace-nowrap bg-transparent pl-1 pr-3 font-bold;
+    @apply flex h-12 w-full cursor-pointer items-center bg-transparent font-bold;
   }
   .email__list_item:hover .checkbox {
     @apply flex;
@@ -71,15 +71,23 @@
     @apply bg-[color:var(--text-sub-dark-theme)];
   }
   .email__list_item:hover .email__list_item_mark {
-    @apply opacity-100;
+    @apply flex;
   }
 
   .email__list_item:hover .mail__letter_preview {
     @apply border-transparent;
   }
 
+  .email__list_item:hover .email__list_item_important {
+    @apply hidden;
+  }
+
   .email__list_item_mark {
-    @apply flex h-12 w-12 min-w-[48px] items-center justify-center opacity-0;
+    @apply hidden h-6 w-6 min-w-[24px] items-center justify-center;
+  }
+
+  .email__list_item_important {
+    @apply flex items-center justify-center;
   }
 
   .email__read_status {
@@ -91,7 +99,7 @@
   }
 
   .email__list_item_icon.attachment {
-    @apply relative;
+    @apply relative rounded-lg hover:bg-[#3C3C3D];
   }
 
   .email__list_item_icon.attachment:hover .attachment__box {
@@ -99,15 +107,15 @@
   }
 
   .attachment__box {
-    @apply absolute -left-80 hidden w-[296px] flex-col rounded-lg bg-white p-2 pt-2 dark:bg-[color:var(--bg-header-dark-theme)];
+    @apply absolute -left-[300px] hidden  w-[296px] flex-col rounded-lg bg-white p-2 pt-2 shadow-md shadow-black/10 dark:bg-[color:var(--bg-header-dark-theme)] dark:shadow-[color:var(--bg-main-dark-theme)];
   }
 
   .attachment__item {
-    @apply flex gap-2;
+    @apply flex items-center gap-2;
   }
 
   .mail__letter_preview {
-    @apply ml-3 flex h-full w-[calc(100%_-_96px)] items-center  justify-between space-x-2 border border-0 border-b-[1px] border-[color:var(--border-white-theme)]  dark:border-[color:var(--bg-main-dark-theme)];
+    @apply flex h-full w-full items-center justify-between  space-x-2 border border-0 border-b-[1px] border-[color:var(--border-white-theme)] px-3  dark:border-[color:var(--bg-main-dark-theme)];
   }
 
   .email__item_attach_picture {

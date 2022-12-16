@@ -9,9 +9,7 @@ const EmailMark: FC<IEmailMark> = ({ isMarked, mark }) => {
   return (
     <div
       className={
-        isMarked
-          ? "email__list_item_mark opacity-100 "
-          : "email__list_item_mark "
+        isMarked ? "email__list_item_mark flex" : "email__list_item_mark "
       }
       onClick={mark}
     >

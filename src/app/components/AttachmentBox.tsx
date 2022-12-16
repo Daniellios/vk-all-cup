@@ -19,8 +19,8 @@ const AttachmentBox: FC<IAttachments> = ({ doc }) => {
       <div className="attachment__box">
         <div className="attachment__item">
           <Image src={doc.img} alt="attachment" width={32} height={32}></Image>
-          <p>
-            {decoded && `image ${decoded?.type}`} {decoded && decoded.size}
+          <p className="font-normal">
+            {decoded && `image.${decoded?.type}`} {decoded && decoded.size}
           </p>
         </div>
       </div>
