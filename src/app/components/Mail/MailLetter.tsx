@@ -3,21 +3,32 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useState } from "react";
+import categories from "../../../static/categories";
 import Attach from "../../../svg/categories/Attach";
 import Finance from "../../../svg/categories/Finance";
 import Error from "../../../svg/Error";
+import AttachmentBox from "../AttachmentBox";
 import CheckBox from "../CheckBox";
 import EmailMark from "../EmailMark";
-import type { IMailLetter } from "./interfaces";
+import type { Base64, IMailLetter } from "./interfaces";
 
 const MailLetter: FC<IMailLetter> = ({
-  height,
-  read = false,
-  important = false,
   id,
+  author,
+  height = 49,
+  bookmark,
+  date,
+  doc,
+  folder,
+  flag,
+  important,
+  read,
+  text,
+  title,
+  to,
 }) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
-  const [isMarked, setIsMarked] = useState<boolean>(false);
+  const [isMarked, setIsMarked] = useState<boolean>(bookmark);
 
   const handleSelect = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -29,11 +40,26 @@ const MailLetter: FC<IMailLetter> = ({
     setIsMarked(!isMarked);
   };
 
+  const fromatDate = (dateString: string) => {
+    const today = new Date();
+
+    const time = new Date(dateString);
+    if (today.getDate() === time.getDate()) {
+      const min = time.getMinutes();
+      const hours = time.getHours();
+      return `${hours}: ${min}`;
+    } else {
+      return `${time.getDate()} ${time.getMonth()}`;
+    }
+  };
+
+  const time = new Date(date).getMinutes();
+
   return (
     <Link
       href={`letter/${id}`}
       className="email__list_link"
-      style={{ top: height }}
+      style={{ top: id * height }}
     >
       <div className="email__list_item">
         {/* STATUS */}
@@ -53,13 +79,18 @@ const MailLetter: FC<IMailLetter> = ({
             {isSelected ? (
               <></>
             ) : (
-              <Image
-                className="email__item_picture"
-                src={"/assets/person.png"}
-                width={32}
-                height={32}
-                alt="sender profile picture"
-              ></Image>
+              <>
+                {author.avatar && (
+                  <Image
+                    className="email__item_picture"
+                    style={{ borderRadius: "50%" }}
+                    src={author.avatar}
+                    width={32}
+                    height={32}
+                    alt="sender profile picture"
+                  ></Image>
+                )}
+              </>
             )}
             <CheckBox select={handleSelect} isChecked={isSelected} />
           </div>
@@ -67,25 +98,19 @@ const MailLetter: FC<IMailLetter> = ({
 
         {/* MAIL CONTENT */}
         <div className="mail__letter_preview">
-          <p className="mr-10 ">Игорь Коньков</p>
+          <p className="mr-10 ">{`${author.name} ${author.surname}`}</p>
           <div className="flex h-12 w-12 min-w-[48px] items-center justify-center">
-            <EmailMark mark={handleMark} isMarked={isMarked}></EmailMark>
+            <EmailMark mark={handleMark} isMarked={bookmark}></EmailMark>
             <div className="flex h-12 w-12 min-w-[48px] items-center justify-center pr-2">
               {important ? <Error></Error> : ""}
             </div>
           </div>
 
           <div className="flex w-[calc(100%_-_30%)] items-center gap-2">
-            <p>Отчет о финансовых результатах</p>
+            <p>{title}</p>
             <div className="w-[calc(100%_-_70%)]">
-              {/* TODO- make calc for widht to solve the issue? */}
               <p className="w-full truncate font-normal text-[color:var(--text-sub-dark-theme)] ">
-                Добрый день, коллеги! Напрвялю вам бланк отчета о финансовых
-                результатах и шаблон с примером его заполнения. Прошу
-                внимательно внести все данные в бланк бухгалтерского отчета и
-                отправить мне до конца четверга. Если забыл кого-то из
-                руководителей прошу добавить в копию или написать мне лично.
-                Хорошего дня!
+                {text}
               </p>
             </div>
           </div>
@@ -93,16 +118,30 @@ const MailLetter: FC<IMailLetter> = ({
           {/* EMAIL SHORT INFO  */}
           <div className="flex h-full w-auto items-center justify-end self-end">
             <div className="flex h-full items-center">
-              <div className="email__list_item_icon">
-                <Finance></Finance>
-              </div>
-              <div className="email__list_item_icon">
-                <Attach></Attach>
-              </div>
+              {categories.map((categoty, idx: number) => {
+                if (flag && categoty.title === flag) {
+                  if (doc) {
+                    return (
+                      <>
+                        <AttachmentBox doc={doc}></AttachmentBox>
+                        <div className="email__list_item_icon" key={idx}>
+                          <categoty.icon></categoty.icon>
+                        </div>
+                      </>
+                    );
+                  } else {
+                    return (
+                      <div className="email__list_item_icon" key={idx}>
+                        <categoty.icon></categoty.icon>
+                      </div>
+                    );
+                  }
+                }
+              })}
             </div>
             <div className="flex h-full w-14 items-center justify-end">
               <p className="font-normal text-[color:var(--text-sub-dark-theme)] ">
-                17:41
+                {fromatDate(date)}
               </p>
             </div>
           </div>

@@ -2,17 +2,11 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import Trash from "../../svg/Trash";
 import Theme from "../../svg/Theme";
-import Spam from "../../svg/Spam";
-import Archive from "../../svg/Archive";
-import Drafts from "../../svg/Drafts";
-import Sent from "../../svg/Sent";
-import Important from "../../svg/Important";
-import Incoming from "../../svg/Incoming";
 import Compose from "../../svg/Compose";
 import Add from "../../svg/Add";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
+import sideBarLinks from "../../static/sidebar";
 
 const Sidebar = () => {
   const [currentTheme, setCurrentTheme] = useState<string>("");
@@ -28,7 +22,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex h-full w-[60px] flex-col justify-between rounded-bl-xl py-3 px-3 md:w-[232px] md:px-4">
+    <div className="flex h-full w-[60px] min-w-[60px] flex-col justify-between rounded-bl-xl py-3 px-3 md:w-[232px] md:min-w-[232px] md:px-4">
       <div className="flex w-full flex-col">
         <button className="mb-3 flex w-full items-center justify-center rounded-[8px] border border-[#00103D]/10 py-2 dark:border-[#999999] dark:bg-white ">
           <div className="flex h-4 w-4 items-center justify-center  md:hidden">
@@ -40,89 +34,22 @@ const Sidebar = () => {
           </p>
         </button>
 
-        <Link
-          href={"/"}
-          className={`sidebar__link  ${
-            pathname === "/" ? "sidebar__link-active" : ""
-          }`}
-        >
-          <div className="flex h-5 w-5 items-center justify-center">
-            <Incoming />
-          </div>
-          <p className="sidebar__link_title"> Входящиe</p>
-        </Link>
-
-        <Link
-          href={"/important"}
-          className={`sidebar__link  ${
-            pathname === "/important" ? "sidebar__link-active" : ""
-          }`}
-        >
-          <div className="flex h-5 w-5 items-center justify-center">
-            <Important />
-          </div>
-          <p className="sidebar__link_title"> Важное</p>
-        </Link>
-
-        <Link
-          href={"/sent"}
-          className={`sidebar__link  ${
-            pathname === "/sent" ? "sidebar__link-active" : ""
-          }`}
-        >
-          <div className="flex h-5 w-5 items-center justify-center">
-            <Sent />
-          </div>
-          <p className="sidebar__link_title"> Отправленные</p>
-        </Link>
-
-        <Link
-          href={"/drafts"}
-          className={`sidebar__link  ${
-            pathname === "/drafts" ? "sidebar__link-active" : ""
-          }`}
-        >
-          <div className="flex h-5 w-5 items-center justify-center">
-            <Drafts />
-          </div>
-          <p className="sidebar__link_title"> Черновики</p>
-        </Link>
-
-        <Link
-          href={"/archive"}
-          className={`sidebar__link  ${
-            pathname === "/archive" ? "sidebar__link-active" : ""
-          }`}
-        >
-          <div className="flex h-5 w-5 items-center justify-center">
-            <Archive />
-          </div>
-          <p className="sidebar__link_title"> Архив</p>
-        </Link>
-
-        <Link
-          href={"/spam"}
-          className={`sidebar__link  ${
-            pathname === "/spam" ? "sidebar__link-active" : ""
-          }`}
-        >
-          <div className="flex h-5 w-5 items-center justify-center">
-            <Spam />
-          </div>
-          <p className="sidebar__link_title"> Спам</p>
-        </Link>
-
-        <Link
-          href={"/trash"}
-          className={`sidebar__link  ${
-            pathname === "/trash" ? "sidebar__link-active" : ""
-          }`}
-        >
-          <div className="flex h-5 w-5 items-center justify-center">
-            <Trash />
-          </div>
-          <p className="sidebar__link_title"> Корзина</p>
-        </Link>
+        {sideBarLinks.map((sbLink, idx) => {
+          return (
+            <Link
+              href={sbLink.path}
+              key={idx}
+              className={`sidebar__link  ${
+                pathname === sbLink.path ? "sidebar__link-active" : ""
+              }`}
+            >
+              <div className="flex h-5 w-5 items-center justify-center">
+                <sbLink.icon></sbLink.icon>
+              </div>
+              <p className="sidebar__link_title">{sbLink.title}</p>
+            </Link>
+          );
+        })}
 
         <hr className="my-[8px] hidden h-[1px] w-full border-[#00103D]/10 dark:border-black/40 md:block" />
 

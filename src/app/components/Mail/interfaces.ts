@@ -1,34 +1,36 @@
-type Base64<imageType extends string> =
+export type Base64<imageType extends string> =
   `data:image/${imageType};base64${string}`;
 
 export interface IMailLetter {
   author: IAuthor;
   bookmark: boolean;
   folder: string;
-  date: Date;
+  date: string;
+  flag: string;
   text: string;
   title: string;
   to: IReciever[];
   read: boolean;
   important: boolean;
-  id: string;
+  id: number;
   height: number;
+  doc: IDoc;
 }
-
+// Base64<"png" | "jpg">;
 export interface IReciever {
-  avatar?: Base64<"png" | "jpg">;
+  avatar?: string;
   email: string;
   name: string;
   surname: string;
 }
 
 export interface IAuthor {
-  avatar?: Base64<"png" | "jpg">;
+  avatar?: string;
   email: string;
   name: string;
   surname: string;
 }
 
 export interface IDoc {
-  img: Base64<"png" | "jpg">;
+  img: string;
 }

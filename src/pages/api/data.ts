@@ -9,7 +9,7 @@ export const config = {
   },
 };
 
-import data from "./../../../data/db.json";
+import data from "../../../db.json";
 
 export default async function handler(
   req: NextApiRequest,

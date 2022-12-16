@@ -31,8 +31,24 @@
     @apply hidden md:block;
   }
 
+  .email__list_wrapper {
+    @apply h-full w-full overflow-y-auto;
+  }
+
   .email__list {
-    @apply relative mt-3 mb-3 flex  w-full flex-col overflow-y-visible rounded-lg dark:bg-[#232324] 2xl:dark:bg-[#232324];
+    @apply relative mt-3 mb-3 flex w-full flex-col rounded-lg dark:bg-[#232324] 2xl:dark:bg-[#232324];
+  }
+
+  .email__list_wrapper::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  .email__list_wrapper::-webkit-scrollbar-track {
+    @apply rounded-full bg-transparent;
+  }
+
+  .email__list_wrapper::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-[color:var(--text-sub-dark-theme)] dark:bg-[color:var(--text-sub-dark-theme)];
   }
 
   .email__list_link {
@@ -72,6 +88,22 @@
 
   .email__list_item_icon {
     @apply flex h-6 w-6 items-center justify-center;
+  }
+
+  .email__list_item_icon.attachment {
+    @apply relative;
+  }
+
+  .email__list_item_icon.attachment:hover .attachment__box {
+    @apply flex;
+  }
+
+  .attachment__box {
+    @apply absolute -left-80 hidden w-[296px] flex-col rounded-lg bg-white p-2 pt-2 dark:bg-[color:var(--bg-header-dark-theme)];
+  }
+
+  .attachment__item {
+    @apply flex gap-2;
   }
 
   .mail__letter_preview {

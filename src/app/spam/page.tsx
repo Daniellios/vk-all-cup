@@ -1,7 +1,7 @@
 import React from "react";
 
 const Spam = () => {
-  return <div>Spam</div>;
+  return <div className="email__list">СПАМ</div>;
 };
 
 export default Spam;

@@ -1,19 +1,28 @@
 import React from "react";
 import MailLetter from "./MailLetter";
 
-const MailList = () => {
-  const fetchMail = async () => {
-    const response = await fetch("/api/data");
-    const mail = await response.json();
-    console.log(mail);
-  };
+import fsPromises from "fs/promises";
+import path from "path";
+import type { IMailLetter } from "./interfaces";
 
-  // fetchMail();
+const fetchMail = async () => {
+  const filePath = path.join(process.cwd(), "db.json");
+  const jsonData = await fsPromises.readFile(filePath);
+  const objectData = JSON.parse(jsonData.toString());
+  return objectData;
+};
+
+const MailList = async () => {
+  const mail = await fetchMail();
+  console.log(mail);
 
   return (
-    <div className="email__list">
-      <MailLetter id={"1"} key={1} height={0}></MailLetter>
-      <MailLetter id={"2"} key={2} height={49} important={true}></MailLetter>
+    <div className="email__list_wrapper">
+      <div className="email__list">
+        {mail.map((letter: IMailLetter, idx: number) => {
+          return <MailLetter key={idx} {...letter} id={idx}></MailLetter>;
+        })}
+      </div>
     </div>
   );
 };
