@@ -96,13 +96,14 @@ const MailLetter: FC<IMailLetter> = ({
             </div>
 
             <div className="flex w-8 min-w-[32px] items-center pr-2">
-              {bookmark ? (
-                <EmailMark mark={handleMark} isMarked={isMarked}></EmailMark>
+              {isMarked ? (
+                <></>
               ) : (
                 <div className="email__list_item_important">
                   {important ? <Error></Error> : ""}
                 </div>
               )}
+              <EmailMark mark={handleMark} isMarked={isMarked}></EmailMark>
             </div>
 
             <div className="flex h-[48px] flex-1 items-center truncate pr-2">

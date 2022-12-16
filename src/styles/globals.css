@@ -115,11 +115,11 @@
   }
 
   .mail__letter_preview_wrap {
-    @apply flex h-full w-[calc(100%_-_64px)] items-center justify-between space-x-2  px-3;
+    @apply flex h-full w-[calc(100%_-_64px)] items-center  px-3;
   }
 
   .mail__letter_preview_content {
-    @apply flex h-full w-full items-center border border-0 border-b-[1px] border-[color:var(--border-white-theme)] dark:border-[color:var(--bg-main-dark-theme)];
+    @apply flex h-full w-full items-center  justify-between border border-0 border-b-[1px] border-[color:var(--border-white-theme)] dark:border-[color:var(--bg-main-dark-theme)];
   }
 
   .email__item_attach_picture {
