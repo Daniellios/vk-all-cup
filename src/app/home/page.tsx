@@ -1,11 +1,11 @@
 import React from "react";
 import MailList from "./MailList";
 
-const Home = async () => {
+const MailPage = async () => {
   return (
     // @ts-ignore
     <MailList></MailList>
   );
 };
 
-export default Home;
+export default MailPage;

@@ -7,7 +7,7 @@ import Spam from "../svg/Spam";
 import Trash from "../svg/Trash";
 
 const sideBarLinks = [
-  { path: "/", title: "Входящие", icon: Incoming },
+  { path: "/home", title: "Входящие", icon: Incoming },
   { path: "/important", title: "Важное", icon: Important },
   { path: "/sent", title: "Отправленные", icon: Sent },
   { path: "/drafts", title: "Черновики", icon: Drafts },

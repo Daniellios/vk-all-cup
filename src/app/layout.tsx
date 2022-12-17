@@ -1,9 +1,7 @@
-import { ThemeProvider } from "next-themes";
 import { Providers } from "./providers";
 import "../styles/globals.css";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import MailList from "./components/Mail/MailList";
 
 export default function RootLayout({
   // Layouts must accept a children prop.
@@ -19,10 +17,9 @@ export default function RootLayout({
       <Providers>
         <body>
           <div className="flex min-h-screen w-full max-w-[1920px] flex-col items-start justify-start overflow-hidden rounded-t-xl rounded-b-xl  bg-white dark:bg-[color:var(--bg-main-dark-theme)]">
-            <Header isLetter={false}></Header>
-            <div className="flex h-full w-full pr-3">
+            <Header></Header>
+            <div className="flex h-full w-full pr-3 pb-4">
               <Sidebar></Sidebar>
-
               {children}
             </div>
           </div>
