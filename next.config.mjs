@@ -10,9 +10,16 @@ const config = {
   swcMinify: true,
   experimental: {
     appDir: true,
-    enableUndici: false,
   },
-
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/home",
+        permanent: true,
+      },
+    ];
+  },
   i18n: {
     locales: ["en"],
     defaultLocale: "en",

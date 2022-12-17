@@ -1,16 +1,15 @@
 "use client";
 
-import { format, isEqual, toDate } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useState } from "react";
 import categories from "../../../static/categories";
 import Error from "../../../svg/Error";
+import fromatDate from "../../../utils/formatDate";
 import AttachmentBox from "../AttachmentBox";
 import CheckBox from "../CheckBox";
 import EmailMark from "../EmailMark";
 import type { IMailLetter } from "./interfaces";
-import { ru } from "date-fns/locale";
 
 const MailLetter: FC<IMailLetter> = ({
   id,
@@ -38,24 +37,6 @@ const MailLetter: FC<IMailLetter> = ({
   const handleMark = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     setIsMarked(!isMarked);
-  };
-
-  const fromatDate = (dateString: string) => {
-    const today = new Date();
-    const time = new Date(dateString);
-
-    const isToday = isEqual(today, time);
-
-    const monthName = format(time, "LLLL", { locale: ru }).substring(0, 3);
-    const monthDate = time.getDate();
-
-    if (isToday) {
-      const min = time.getMinutes();
-      const hours = time.getHours();
-      return `${hours}: ${min}`;
-    } else {
-      return `${monthDate}  ${monthName}`;
-    }
   };
 
   return (

@@ -1,31 +1,50 @@
+import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import DownLoad from "../../../svg/DownLoad";
 import Error from "../../../svg/Error";
 
-const Letter = ({ params }) => {
-  console.log(params);
+import fsPromises from "fs/promises";
+import path from "path";
+import { IMailLetter } from "../../components/Mail/interfaces";
+import fromatDate from "../../../utils/formatDate";
+import formatConverter from "../../../utils/formatConverter";
+import formatRecievers from "../../../utils/formatRecievers";
+import formatAttachments from "../../../utils/formatAttachments";
+
+const fetchLetter = async (params: string) => {
+  const filePath = path.join(process.cwd(), "db.json");
+  const jsonData = await fsPromises.readFile(filePath);
+  const objectData = JSON.parse(jsonData.toString());
+  return objectData[+params];
+};
+
+const Letter = async ({ params }: Params) => {
+  const letter: IMailLetter = await fetchLetter(params.id);
+  const { author, read, text, title, doc, date, important, to } = letter;
+  const attachmentInfo = formatConverter(doc.img);
 
   return (
     <div className="mt-3 mb-3 flex h-fit w-[calc(100%_-_232px)] overflow-y-visible rounded-lg dark:bg-[#232324]">
       <div className="flex h-full w-full flex-col pt-4 pl-2 pr-3">
         {/* SUBJECT */}
         <div className="flex h-[60px] w-full pl-7">
-          <h1 className="inline-block w-full text-xl">
-            Очет о финансовых результатов
-          </h1>
+          <h1 className="inline-block w-full text-xl">{title}</h1>
         </div>
 
         {/* SENDER */}
         <div className="mb-3 flex w-full">
           <div className="mr-1 flex h-[42px] w-7 min-w-[28px] items-center justify-center">
-            <div className="h-[6px] w-[6px] rounded-full bg-blue-500 content-none"></div>
+            <div
+              className={`email__read_status ${read ? "bg-transparent" : ""}`}
+            ></div>
           </div>
 
           <div className="flex h-[42px] w-8 min-w-[32px] items-center ">
             <Image
-              src={"/assets/person.png"}
+              src={author.avatar ? author.avatar : "/assets/person.png"}
+              style={{ borderRadius: "50%" }}
               width={32}
               height={32}
               alt="sender profile picture"
@@ -36,18 +55,19 @@ const Letter = ({ params }) => {
           <div className="flex flex-col pl-3 font-normal">
             {/* MSG INFO */}
             <div className="flex w-full items-center gap-2">
-              <p>Игорь Коньков</p>
-              <p className="text-[13px] text-[color:var(--text-sub-dark-theme)]">
-                Сегодня, 12:34
+              <p>
+                {author.name} {author.surname}
               </p>
-              <Error></Error>
+              <p className="text-[13px] text-[color:var(--text-sub-dark-theme)]">
+                {fromatDate(date)}
+              </p>
+              {important ? <Error></Error> : <></>}
             </div>
 
             {/* RECIEVERS */}
             <div className="flex w-full">
               <p className="text-[13px]  text-[color:var(--text-sub-dark-theme)]">
-                12 получателей: Вы, Андрей Щербаков, Dmitry Petrov, Валерий
-                Чкалов ещё 5 получателей
+                {formatRecievers(to)}
               </p>
             </div>
           </div>
@@ -60,23 +80,7 @@ const Letter = ({ params }) => {
               <div className="email__item_attach_picture">
                 <Image
                   className="email__item_attach_picture"
-                  src={"/assets/attach-img.png"}
-                  width={256}
-                  height={190}
-                  alt="imgae"
-                ></Image>
-                <div className="email__item_attach_picture_hover">
-                  <DownLoad></DownLoad>
-                  <p className="font-normal text-[#2C2D2E] hover:underline dark:text-[#D9DADD]">
-                    Скачать
-                  </p>
-                </div>
-              </div>
-
-              <div className="email__item_attach_picture">
-                <Image
-                  className="email__item_attach_picture"
-                  src={"/assets/attach-img2.png"}
+                  src={doc.img}
                   width={256}
                   height={190}
                   alt="imgae"
@@ -91,28 +95,22 @@ const Letter = ({ params }) => {
             </div>
 
             <div className="flex items-center text-[13px] font-normal">
-              <p className="mr-4">2 файлa</p>
+              <p className="mr-4">{formatAttachments(doc)}</p>
               <Link
                 href={"#"}
                 className="cursor-pointer text-[color:var(--link-blue)]  hover:underline"
               >
                 Скачать все файлы
               </Link>
-              <span className=" text-[color:var(--text-sub-dark-theme)]">
-                {`(${5}Mb)`}
+              <span className="ml-2 text-[color:var(--text-sub-dark-theme)]">
+                {attachmentInfo && attachmentInfo.size}
               </span>
             </div>
           </div>
 
           {/* TEXT CONTENT */}
           <div className="font-normal">
-            <p>
-              Добрый день, коллеги! Напрвялю вам бланк отчета о финансовых
-              результатах и шаблон с примером его заполнения. Прошу внимательно
-              внести все данные в бланк бухгалтерского отчета и отправить мне до
-              конца четверга. Если забыл кого-то из руководителей прошу добавить
-              в копию или написать мне лично. Хорошего дня!
-            </p>
+            <p className="break-all">{text}</p>
           </div>
         </div>
       </div>
