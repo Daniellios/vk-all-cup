@@ -1,9 +1,8 @@
 import React from "react";
-import MailLetter from "./MailLetter";
-
+import { IMailLetter } from "../components/Mail/interfaces";
+import MailLetter from "../components/Mail/MailLetter";
 import fsPromises from "fs/promises";
 import path from "path";
-import type { IMailLetter } from "./interfaces";
 
 const fetchMail = async () => {
   const filePath = path.join(process.cwd(), "db.json");
@@ -14,8 +13,6 @@ const fetchMail = async () => {
 
 const MailList = async () => {
   const mail = await fetchMail();
-  console.log(mail);
-
   return (
     <div className="email__list_wrapper">
       <div className="email__list">

@@ -1,8 +1,5 @@
-import { NextPage } from "next";
-import MailList from "./components/Mail/MailList";
-
-const Home: NextPage = () => {
-  return <MailList></MailList>;
+const Home = async () => {
+  return <div></div>;
 };
 
 export default Home;

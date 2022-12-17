@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <header className="flex w-full items-center rounded-t-xl bg-white py-3 px-4 shadow-md shadow-[#00103D]/10 dark:bg-[color:var(--bg-header-dark-theme)]">
-      {pathname?.includes("letter") ? (
+      {pathname?.includes("home/") ? (
         <Link href={"/"} className="hover:underline">
           <div className="flex h-8 items-center gap-3">
             <LeftArrow></LeftArrow>

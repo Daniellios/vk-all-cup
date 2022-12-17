@@ -1,5 +1,6 @@
 "use client";
 
+import { format, isEqual, toDate } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useState } from "react";
@@ -9,6 +10,7 @@ import AttachmentBox from "../AttachmentBox";
 import CheckBox from "../CheckBox";
 import EmailMark from "../EmailMark";
 import type { IMailLetter } from "./interfaces";
+import { ru } from "date-fns/locale";
 
 const MailLetter: FC<IMailLetter> = ({
   id,
@@ -40,20 +42,25 @@ const MailLetter: FC<IMailLetter> = ({
 
   const fromatDate = (dateString: string) => {
     const today = new Date();
-
     const time = new Date(dateString);
-    if (today.getDate() === time.getDate()) {
+
+    const isToday = isEqual(today, time);
+
+    const monthName = format(time, "LLLL", { locale: ru }).substring(0, 3);
+    const monthDate = time.getDate();
+
+    if (isToday) {
       const min = time.getMinutes();
       const hours = time.getHours();
       return `${hours}: ${min}`;
     } else {
-      return `${time.getDate()} ${time.getMonth()}`;
+      return `${monthDate}  ${monthName}`;
     }
   };
 
   return (
     <Link
-      href={`letter/${id}`}
+      href={`home/${id}`}
       className="email__list_link"
       style={{ top: id * height }}
     >
@@ -107,8 +114,8 @@ const MailLetter: FC<IMailLetter> = ({
             </div>
 
             <div className="flex h-[48px] flex-1 items-center truncate pr-2">
-              <p>{title}</p>
-              <p className="ml-3  font-normal text-[color:var(--text-sub-dark-theme)] ">
+              <p className="min-w-[140px] truncate md:min-w-fit">{title}</p>
+              <p className="ml-3 truncate pr-4 font-normal text-[color:var(--text-sub-dark-theme)]">
                 {text}
               </p>
             </div>

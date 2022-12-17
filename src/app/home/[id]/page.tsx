@@ -4,7 +4,9 @@ import React from "react";
 import DownLoad from "../../../svg/DownLoad";
 import Error from "../../../svg/Error";
 
-const Letter = () => {
+const Letter = ({ params }) => {
+  console.log(params);
+
   return (
     <div className="mt-3 mb-3 flex h-fit w-[calc(100%_-_232px)] overflow-y-visible rounded-lg dark:bg-[#232324]">
       <div className="flex h-full w-full flex-col pt-4 pl-2 pr-3">

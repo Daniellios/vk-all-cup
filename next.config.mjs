@@ -10,7 +10,9 @@ const config = {
   swcMinify: true,
   experimental: {
     appDir: true,
+    enableUndici: false,
   },
+
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
