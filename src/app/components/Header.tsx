@@ -1,19 +1,27 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { FC } from "react";
 import LeftArrow from "../../svg/LeftArrow";
 import MainLogo from "../../svg/MainLogo";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleGoBack = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    router.back();
+  };
+
+  const routePath = pathname?.split("/").length;
 
   return (
     <header className="flex w-full items-center rounded-t-xl bg-white py-3 px-4 shadow-md shadow-[#00103D]/10 dark:bg-[color:var(--bg-header-dark-theme)]">
-      {pathname?.includes("home/") ? (
-        <Link href={"/home"} className="hover:underline">
+      {routePath === 3 ? (
+        <Link href={"#"} className="hover:underline" onClick={handleGoBack}>
           <div className="flex h-8 items-center gap-3">
             <LeftArrow></LeftArrow>
             <p className="font-normal">Вернуться</p>

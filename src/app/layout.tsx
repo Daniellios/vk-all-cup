@@ -10,15 +10,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  console.log("this");
-
   return (
     <html lang="en">
       <Providers>
         <body>
           <div className="flex min-h-screen w-full max-w-[1920px] flex-col items-start justify-start overflow-hidden rounded-t-xl rounded-b-xl  bg-white dark:bg-[color:var(--bg-main-dark-theme)]">
             <Header></Header>
-            <div className="flex h-full w-full pr-3 pb-4">
+            <div className="flex h-full w-full  pr-3 pb-4">
               <Sidebar></Sidebar>
               {children}
             </div>

@@ -9,13 +9,14 @@ const config = {
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
+    enableUndici: true,
     appDir: true,
   },
   async redirects() {
     return [
       {
         source: "/",
-        destination: "/home",
+        destination: "/inbox",
         permanent: true,
       },
     ];

@@ -1,18 +1,12 @@
 import React from "react";
 
-import path from "path";
-import fsPromises from "fs/promises";
-
 import type { IMailLetter } from "../components/Mail/interfaces";
 import MailLetter from "../components/Mail/MailLetter";
 
 const fetchMail = async () => {
-  const filePath = path.join(process.cwd(), "db.json");
-  const jsonData = await fsPromises.readFile(filePath);
-  const objectData = JSON.parse(jsonData.toString());
-  console.log(objectData);
-
-  const importantMail = objectData.filter(
+  const response = await fetch("http://localhost:3000/api/db");
+  const data = await response.json();
+  const importantMail = data.filter(
     (letter: IMailLetter) => letter.folder === "Важное"
   );
   return importantMail;
@@ -27,7 +21,12 @@ const Important = async () => {
       <div className="email__list">
         {mail.map((letter: IMailLetter, idx: number) => {
           const letterComponent = (
-            <MailLetter key={idx} {...letter} id={counter}></MailLetter>
+            <MailLetter
+              key={"i" + idx}
+              {...letter}
+              id={counter}
+              path={"important"}
+            ></MailLetter>
           );
           counter++;
           return letterComponent;

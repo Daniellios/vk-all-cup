@@ -14,6 +14,7 @@ export interface IMailLetter {
   important: boolean;
   id: number;
   height: number;
+  path: string;
   doc: IDoc;
 }
 // Base64<"png" | "jpg">;

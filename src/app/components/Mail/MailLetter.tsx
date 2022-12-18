@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { FC, useState } from "react";
 import categories from "../../../static/categories";
 import Error from "../../../svg/Error";
@@ -22,13 +23,13 @@ const MailLetter: FC<IMailLetter> = ({
   flag,
   important,
   read,
+  path,
   text,
   title,
   to,
 }) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const [isMarked, setIsMarked] = useState<boolean>(bookmark);
-
   const handleSelect = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     setIsSelected(!isSelected);
@@ -39,9 +40,11 @@ const MailLetter: FC<IMailLetter> = ({
     setIsMarked(!isMarked);
   };
 
+  console.log(path, id);
+
   return (
     <Link
-      href={`home/${id}`}
+      href={`${path}/${id}`}
       className="email__list_link"
       style={{ top: id * height }}
     >

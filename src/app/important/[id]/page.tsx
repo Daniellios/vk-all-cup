@@ -5,19 +5,19 @@ import React from "react";
 import DownLoad from "../../../svg/DownLoad";
 import Error from "../../../svg/Error";
 
-import fsPromises from "fs/promises";
-import path from "path";
-import { IMailLetter } from "../../components/Mail/interfaces";
+import type { IMailLetter } from "../../components/Mail/interfaces";
 import fromatDate from "../../../utils/formatDate";
 import formatConverter from "../../../utils/formatConverter";
 import formatRecievers from "../../../utils/formatRecievers";
 import formatAttachments from "../../../utils/formatAttachments";
 
-const fetchLetter = async (params: string) => {
-  const filePath = path.join(process.cwd(), "db.json");
-  const jsonData = await fsPromises.readFile(filePath);
-  const objectData = JSON.parse(jsonData.toString());
-  return objectData[+params];
+const fetchLetter = async (params: number) => {
+  const response = await fetch("http://localhost:3000/api/db");
+  const data = await response.json();
+  const filteredData = data.filter(
+    (letter: IMailLetter) => letter.folder === "Важное"
+  );
+  return filteredData[+params];
 };
 
 const Letter = async ({ params }: Params) => {
@@ -42,13 +42,15 @@ const Letter = async ({ params }: Params) => {
           </div>
 
           <div className="flex h-[42px] w-8 min-w-[32px] items-center ">
-            <Image
-              src={author.avatar ? author.avatar : "/assets/person.png"}
-              style={{ borderRadius: "50%" }}
-              width={32}
-              height={32}
-              alt="sender profile picture"
-            ></Image>
+            {author.avatar && (
+              <Image
+                src={author.avatar}
+                style={{ borderRadius: "50%" }}
+                width={32}
+                height={32}
+                alt="sender profile picture"
+              ></Image>
+            )}
           </div>
 
           {/* SENDER AND IINFO */}
@@ -78,13 +80,16 @@ const Letter = async ({ params }: Params) => {
             {/* ATTACHMENTS */}
             <div className="flex gap-[10px]">
               <div className="email__item_attach_picture">
-                <Image
-                  className="email__item_attach_picture"
-                  src={doc.img}
-                  width={256}
-                  height={190}
-                  alt="imgae"
-                ></Image>
+                {doc.img && (
+                  <Image
+                    className="email__item_attach_picture"
+                    src={doc.img}
+                    style={{ borderRadius: "12px" }}
+                    width={256}
+                    height={190}
+                    alt="imgae"
+                  ></Image>
+                )}
                 <div className="email__item_attach_picture_hover">
                   <DownLoad></DownLoad>
                   <p className="font-normal text-[#2C2D2E] hover:underline dark:text-[#D9DADD]">

@@ -12,7 +12,6 @@ const Sidebar = () => {
   const [currentTheme, setCurrentTheme] = useState<string>("");
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
-  console.log(pathname);
 
   useEffect(() => setCurrentTheme("dark"), []);
 
