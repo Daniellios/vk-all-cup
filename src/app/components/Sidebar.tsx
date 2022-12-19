@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import Theme from "../../svg/Theme";
 import Compose from "../../svg/Compose";
 import Add from "../../svg/Add";
