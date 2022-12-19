@@ -7,7 +7,7 @@ const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail
 const fetchMail = async () => {
   const response = await fetch(URL);
   const data = await response.json();
-  return data;
+  return [...data];
 };
 const Trash = async () => {
   const mail = await fetchMail();

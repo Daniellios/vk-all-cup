@@ -8,7 +8,7 @@ const fetchMail = async () => {
   const response = await fetch(URL);
   const data = await response.json();
 
-  return data;
+  return [...data];
 };
 
 const Important = async () => {

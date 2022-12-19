@@ -7,7 +7,7 @@ const fetchMail = async () => {
   try {
     const response = await fetch(URL);
     const data = await response.json();
-    return data;
+    return [...data];
   } catch (err) {
     console.log(err);
   }
@@ -19,16 +19,17 @@ const InboxPage = async () => {
   return (
     <div className="email__list_wrapper">
       <div className="email__list">
-        {mail.map((letter: IMailLetter, idx: number) => {
-          return (
-            <MailLetter
-              key={"h" + idx}
-              {...letter}
-              id={idx}
-              path={"inbox"}
-            ></MailLetter>
-          );
-        })}
+        {mail &&
+          mail.map((letter: IMailLetter, idx: number) => {
+            return (
+              <MailLetter
+                key={"h" + idx}
+                {...letter}
+                id={idx}
+                path={"inbox"}
+              ></MailLetter>
+            );
+          })}
       </div>
     </div>
   );
