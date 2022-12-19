@@ -3,11 +3,16 @@ import type { IMailLetter } from "../components/Mail/interfaces";
 import MailLetter from "../components/Mail/MailLetter";
 
 const fetchMail = async () => {
-  const response = await fetch(
-    `${process.env.SUPABASE_URL}/storage/v1/object/sign/mail/inbox/Inbox.json?token=${process.env.SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`
-  );
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(
+      `${process.env.SUPABASE_URL}/storage/v1/object/sign/mail/inbox/Inbox.json?token=${process.env.SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`,
+      { headers: {} }
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const InboxPage = async () => {

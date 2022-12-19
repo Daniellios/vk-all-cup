@@ -1,4 +1,4 @@
-const formatConverter = (avatar: string) => {
+const formatConverter = (avatar: string | undefined) => {
   if (avatar) {
     const splitEcndode = avatar.split(",");
     const decodedString = splitEcndode[0]?.split(";")[0]?.split("/")[1];

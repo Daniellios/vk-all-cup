@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@wits/next-themes": "^0.2.14",
     "date-fns": "^2.29.3",
     "next": "13.0.2",
     "next-themes": "^0.2.1",
