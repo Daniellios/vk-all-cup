@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar";
 // import { ServerThemeProvider } from "@wits/next-themes";
 // import { Providers } from "./providers";
 
-export default function RootLayout({
+export default async function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
   children,
