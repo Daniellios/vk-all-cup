@@ -13,7 +13,7 @@ import formatAttachments from "../../../utils/formatAttachments";
 
 const fetchLetter = async (params: number) => {
   const response = await fetch(
-    `${process.env.SUPABASE_URL}/storage/v1/object/sign/mail/drafts/Drafts.json?token=${process.env.SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`
+    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/drafts/Drafts.json?token=${process.env.NEXT_PUBLIC_SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`
   );
   const data = await response.json();
 
