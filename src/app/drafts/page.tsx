@@ -20,8 +20,8 @@ const Drafts = async () => {
         {mail.map((letter: IMailLetter, idx: number) => {
           const letterComponent = (
             <MailLetter
-              key={"d" + idx}
               {...letter}
+              key={`drafts${idx}`}
               id={counter}
               path={"drafts"}
             ></MailLetter>

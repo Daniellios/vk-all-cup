@@ -10,14 +10,14 @@ import sideBarLinks from "../../static/sidebar";
 
 const Sidebar = () => {
   const [currentTheme, setCurrentTheme] = useState<string>("");
-  const { theme, setTheme } = useTheme();
+  // const { theme, setTheme } = useTheme();
   const pathname = usePathname();
 
   useEffect(() => setCurrentTheme("dark"), []);
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-    setCurrentTheme(theme === "dark" ? "light" : "dark");
+    // setTheme(theme === "dark" ? "light" : "dark");
+    // setCurrentTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (

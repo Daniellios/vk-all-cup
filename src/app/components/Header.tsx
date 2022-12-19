@@ -1,10 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { FC } from "react";
+import React from "react";
 import LeftArrow from "../../svg/LeftArrow";
 import MainLogo from "../../svg/MainLogo";
-
 import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {

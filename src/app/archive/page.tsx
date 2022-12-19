@@ -22,9 +22,9 @@ const Archive = async () => {
         {mail.map((letter: IMailLetter, idx: number) => {
           const letterComponent = (
             <MailLetter
-              key={"archive" + idx}
               {...letter}
               id={counter}
+              key={`archive${idx}`}
               path={`archive`}
             ></MailLetter>
           );

@@ -43,6 +43,7 @@ const MailLetter: FC<IMailLetter> = ({
   return (
     <Link
       href={`${path}/${id}`}
+      // key={`${path + id}`}
       className="email__list_link"
       style={{ top: id * height }}
     >

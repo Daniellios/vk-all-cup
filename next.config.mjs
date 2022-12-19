@@ -7,11 +7,12 @@
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
-  // swcMinify: true,
+  swcMinify: true,
   experimental: {
     enableUndici: true,
     appDir: true,
   },
+
   async redirects() {
     return [
       {
