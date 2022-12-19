@@ -4,12 +4,12 @@ import type { IMailLetter } from "../components/Mail/interfaces";
 import MailLetter from "../components/Mail/MailLetter";
 
 const fetchMail = async () => {
-  const response = await fetch("http://localhost:3000/api/db");
-  const data = await response.json();
-  const importantMail = data.filter(
-    (letter: IMailLetter) => letter.folder === "Важное"
+  const response = await fetch(
+    `${process.env.SUPABASE_URL}/storage/v1/object/sign/mail/important/Important.json?token=${process.env.SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`
   );
-  return importantMail;
+  const data = await response.json();
+
+  return data;
 };
 
 const Important = async () => {
@@ -22,7 +22,7 @@ const Important = async () => {
         {mail.map((letter: IMailLetter, idx: number) => {
           const letterComponent = (
             <MailLetter
-              key={"i" + idx}
+              key={"important" + idx}
               {...letter}
               id={counter}
               path={"important"}

@@ -40,11 +40,10 @@ const MailLetter: FC<IMailLetter> = ({
     setIsMarked(!isMarked);
   };
 
-  console.log(path, id);
-
   return (
     <Link
       href={`${path}/${id}`}
+      key={path + id}
       className="email__list_link"
       style={{ top: id * height }}
     >

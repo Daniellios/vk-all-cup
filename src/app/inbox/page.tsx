@@ -3,10 +3,11 @@ import type { IMailLetter } from "../components/Mail/interfaces";
 import MailLetter from "../components/Mail/MailLetter";
 
 const fetchMail = async () => {
-  const response = await fetch("http://localhost:3000/api/db");
+  const response = await fetch(
+    `${process.env.SUPABASE_URL}/storage/v1/object/sign/mail/inbox/Inbox.json?token=${process.env.SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`
+  );
   const data = await response.json();
-  const filteredData = data.filter((letter: IMailLetter) => !letter.folder);
-  return filteredData;
+  return data;
 };
 
 const InboxPage = async () => {

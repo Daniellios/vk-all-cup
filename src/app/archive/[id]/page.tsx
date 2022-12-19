@@ -12,12 +12,12 @@ import formatRecievers from "../../../utils/formatRecievers";
 import formatAttachments from "../../../utils/formatAttachments";
 
 const fetchLetter = async (params: number) => {
-  const response = await fetch("http://localhost:3000/api/db");
-  const data = await response.json();
-  const filteredData = data.filter(
-    (letter: IMailLetter) => letter.folder === "Архив"
+  const response = await fetch(
+    `${process.env.SUPABASE_URL}/storage/v1/object/sign/mail/archive/Archive.json?token=${process.env.SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`,
+    { cache: "force-cache" }
   );
-  return filteredData[+params];
+  const data = await response.json();
+  return data[+params];
 };
 
 const Letter = async ({ params }: Params) => {
