@@ -7,7 +7,7 @@
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: false,
   experimental: {
     enableUndici: true,
     appDir: true,
