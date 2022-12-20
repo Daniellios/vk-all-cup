@@ -8,6 +8,7 @@ const fromatDate = (dateString: string) => {
     const time = new Date(dateString);
 
     const isToday = isEqual(today, time);
+    console.log(typeof time);
 
     const monthName = format(time, "LLLL", { locale: ru }).substring(0, 3);
     const monthDate = time.getDate();

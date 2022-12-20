@@ -8,9 +8,8 @@ const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail
 const fetchMail = async () => {
   const response = await fetch(URL);
   const data = await response.json();
-  console.log(Array.isArray(data));
 
-  return [data];
+  return data;
 };
 
 const Archive = async () => {
