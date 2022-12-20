@@ -22,13 +22,17 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const res = await fetch(URL);
-  const { id } = context.params as IParams;
-  const mail: IMailLetter[] = await res.json();
-  const index = +id | 1;
-  const singleLetter = mail[index];
-  return { props: { singleLetter } };
+  const { id } = params as IParams;
+  if (id) {
+    const mail: IMailLetter[] = await res.json();
+    const index = +id;
+    const singleLetter = mail[index];
+    return { props: { singleLetter } };
+  } else {
+    return { props: { error: true } };
+  }
 };
 
 const Letter = ({ singleLetter }: Params) => {
