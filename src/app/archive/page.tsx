@@ -11,7 +11,7 @@ const fetchMail = async () => {
   const data = await response.json();
   console.log(Array.isArray(data));
 
-  return [...data];
+  return [data];
 };
 
 const Archive = async () => {
