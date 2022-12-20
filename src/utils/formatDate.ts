@@ -1,22 +1,26 @@
-import { format, isEqual, toDate } from "date-fns";
+import { format, isEqual } from "date-fns";
 
 import { ru } from "date-fns/locale";
 
 const fromatDate = (dateString: string) => {
-  const today = new Date();
-  const time = new Date(dateString);
+  if (dateString) {
+    const today = new Date();
+    const time = new Date(dateString);
 
-  const isToday = isEqual(today, time);
+    const isToday = isEqual(today, time);
 
-  const monthName = format(time, "LLLL", { locale: ru }).substring(0, 3);
-  const monthDate = time.getDate();
+    const monthName = format(time, "LLLL", { locale: ru }).substring(0, 3);
+    const monthDate = time.getDate();
 
-  if (isToday) {
-    const min = time.getMinutes();
-    const hours = time.getHours();
-    return `${hours}: ${min}`;
+    if (isToday) {
+      const min = time.getMinutes();
+      const hours = time.getHours();
+      return `${hours}: ${min}`;
+    } else {
+      return `${monthDate}  ${monthName}`;
+    }
   } else {
-    return `${monthDate}  ${monthName}`;
+    return "";
   }
 };
 
