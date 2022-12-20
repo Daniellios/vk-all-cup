@@ -44,7 +44,7 @@ const Letter = async ({ params }: Params) => {
           <div className="flex h-[42px] w-8 min-w-[32px] items-center ">
             {author.avatar && (
               <Image
-                src={author.avatar}
+                src={author.avatar ? author.avatar : "/assets/person.png"}
                 style={{ borderRadius: "50%" }}
                 width={32}
                 height={32}
