@@ -1,4 +1,3 @@
-import { usePathname } from "next/navigation";
 import React from "react";
 
 import type { IMailLetter } from "../components/Mail/interfaces";
