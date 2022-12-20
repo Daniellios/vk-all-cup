@@ -58,18 +58,14 @@ const MailLetter: FC<IMailLetter> = ({
             {isSelected ? (
               <></>
             ) : (
-              <>
-                {avatar && (
-                  <Image
-                    className="email__item_picture"
-                    style={{ borderRadius: "50%" }}
-                    src={avatar ? avatar : "/assets/person.png"}
-                    width={32}
-                    height={32}
-                    alt="sender profile picture"
-                  ></Image>
-                )}
-              </>
+              <Image
+                className="email__item_picture"
+                style={{ borderRadius: "50%" }}
+                src={"/assets/person.png"}
+                width={32}
+                height={32}
+                alt="sender profile picture"
+              ></Image>
             )}
             <CheckBox select={handleSelect} isChecked={isSelected} />
           </div>
