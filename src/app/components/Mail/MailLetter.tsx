@@ -75,7 +75,7 @@ const MailLetter: FC<IMailLetter> = ({
         <div className="mail__letter_preview_wrap">
           <div className="mail__letter_preview_content">
             <div className="flex w-[22%] min-w-[22%] items-center pr-2">
-              <p>{`${author.name} ${author.surname}`}</p>
+              <p>{`${author?.name} ${author?.surname}`}</p>
             </div>
 
             <div className="flex w-8 min-w-[32px] items-center pr-2">

@@ -27,9 +27,9 @@ export interface IReciever {
 
 export interface IAuthor {
   avatar?: string;
-  email: string;
-  name: string;
-  surname: string;
+  email?: string;
+  name?: string;
+  surname?: string;
 }
 
 export interface IDoc {
