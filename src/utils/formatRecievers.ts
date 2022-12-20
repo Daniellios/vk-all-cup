@@ -1,7 +1,9 @@
-import type { IReciever } from "../app/components/Mail/interfaces";
+import type { IReciever } from "../pages/components/Mail/interfaces";
 
 const formatRecievers = (recievers: IReciever[]) => {
   const recieversAmount = recievers.length;
+
+  let res = "";
 
   const cutRecievers = recievers.splice(0, 2).map((reciever, idx) => {
     if (idx === 2) {
@@ -10,8 +12,13 @@ const formatRecievers = (recievers: IReciever[]) => {
       return `${reciever.name} ${reciever.surname}`;
     }
   });
-  const resText = `${recieversAmount} получателей: Вы, ${cutRecievers}`;
-  return resText;
+  if (recieversAmount > 1) {
+    res = `${recieversAmount} получателей: Вы, ${cutRecievers}`;
+    return res;
+  } else {
+    res = `1 получатель: Вы`;
+    return res;
+  }
 };
 
 export default formatRecievers;
