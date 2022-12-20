@@ -18,17 +18,16 @@ const MailLetter: FC<IMailLetter> = ({
   bookmark,
   date,
   doc,
-  folder,
   flag,
   important,
   read,
   path,
   text,
   title,
-  to,
 }) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const [isMarked, setIsMarked] = useState<boolean>(bookmark);
+  const [avatar] = useState<string | undefined>(author.avatar);
   const handleSelect = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     setIsSelected(!isSelected);
@@ -62,7 +61,7 @@ const MailLetter: FC<IMailLetter> = ({
               <Image
                 className="email__item_picture"
                 style={{ borderRadius: "50%" }}
-                src={author.avatar ? author.avatar : "/assets/person.png"}
+                src={avatar ? avatar : "/assets/person.png"}
                 width={32}
                 height={32}
                 alt="sender profile picture"
