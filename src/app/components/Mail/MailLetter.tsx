@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React, { FC, useState } from "react";
 import categories from "../../../static/categories";
 import Error from "../../../svg/Error";
@@ -43,7 +42,6 @@ const MailLetter: FC<IMailLetter> = ({
   return (
     <Link
       href={`${path}/${id}`}
-      // key={`${path + id}`}
       className="email__list_link"
       style={{ top: id * height }}
     >
@@ -61,18 +59,14 @@ const MailLetter: FC<IMailLetter> = ({
             {isSelected ? (
               <></>
             ) : (
-              <>
-                {author.avatar && (
-                  <Image
-                    className="email__item_picture"
-                    style={{ borderRadius: "50%" }}
-                    src={author.avatar ? author.avatar : "/assets/person.png"}
-                    width={32}
-                    height={32}
-                    alt="sender profile picture"
-                  ></Image>
-                )}
-              </>
+              <Image
+                className="email__item_picture"
+                style={{ borderRadius: "50%" }}
+                src={author.avatar ? author.avatar : "/assets/person.png"}
+                width={32}
+                height={32}
+                alt="sender profile picture"
+              ></Image>
             )}
             <CheckBox select={handleSelect} isChecked={isSelected} />
           </div>
