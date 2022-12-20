@@ -66,7 +66,7 @@ const MailLetter: FC<IMailLetter> = ({
                   <Image
                     className="email__item_picture"
                     style={{ borderRadius: "50%" }}
-                    src={author.avatar}
+                    src={author.avatar ? author.avatar : "/assets/person.png"}
                     width={32}
                     height={32}
                     alt="sender profile picture"
