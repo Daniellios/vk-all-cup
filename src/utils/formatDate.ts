@@ -1,4 +1,4 @@
-import { format, isEqual, toDate } from "date-fns";
+import { format, isEqual } from "date-fns";
 
 import { ru } from "date-fns/locale";
 
