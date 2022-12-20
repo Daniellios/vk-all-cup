@@ -27,7 +27,7 @@ const MailLetter: FC<IMailLetter> = ({
 }) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const [isMarked, setIsMarked] = useState<boolean>(bookmark);
-  const [avatar] = useState<string | undefined>(author.avatar);
+  // const [avatar] = useState<string | undefined>(author.avatar);
   const handleSelect = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     setIsSelected(!isSelected);
