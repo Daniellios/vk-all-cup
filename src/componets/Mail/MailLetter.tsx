@@ -73,11 +73,13 @@ const MailLetter: FC<IMailLetter> = ({
         {/* MAIL CONTENT */}
         <div className="mail__letter_preview_wrap">
           <div className="mail__letter_preview_content">
-            <div className="flex w-[22%] min-w-[22%] items-center pr-2">
-              <p>{`${author.name} ${author.surname}`}</p>
+            <div className="flex w-[22%] min-w-[22%] items-center truncate  text-[12px] sm:pr-2 sm:text-[14px]">
+              <p className="truncate">
+                {`${author.name} `} <br /> {`  ${author.surname}`}
+              </p>
             </div>
 
-            <div className="flex w-8 min-w-[32px] items-center pr-2">
+            <div className="hidden w-8 min-w-[32px] items-center pr-2 sm:flex">
               {isMarked ? (
                 <></>
               ) : (
@@ -88,15 +90,15 @@ const MailLetter: FC<IMailLetter> = ({
               <EmailMark mark={handleMark} isMarked={isMarked}></EmailMark>
             </div>
 
-            <div className="flex h-[48px] flex-1 items-center truncate pr-2">
+            <div className="flex h-[48px] flex-1 flex-col justify-center truncate pr-4  pl-2 text-[13px] sm:flex-row sm:items-center sm:pr-2 sm:pl-0 sm:text-inherit">
               <p className="min-w-[140px] truncate md:min-w-fit">{title}</p>
-              <p className="ml-3 truncate pr-4 font-normal text-[color:var(--text-sub-dark-theme)]">
+              <p className="truncate pr-4 font-normal text-[color:var(--text-sub-dark-theme)] sm:ml-3 sm:block">
                 {text}
               </p>
             </div>
 
             {/* EMAIL SHORT INFO  */}
-            <div className="flex h-full min-w-[24px] flex-shrink-0 items-center pr-2">
+            <div className="flex h-full min-w-[24px] flex-shrink-0 flex-col items-center justify-center sm:flex-row sm:pr-2">
               {categories.map((categoty, idx: number) => {
                 if (flag && categoty.title === flag) {
                   if (doc) {
