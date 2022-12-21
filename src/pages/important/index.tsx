@@ -3,7 +3,8 @@ import React from "react";
 
 import type { IMailLetter } from "../components/Mail/interfaces";
 import MailLetter from "../components/Mail/MailLetter";
-const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/important/Important.json?token=${process.env.NEXT_PUBLIC_SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`;
+
+const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/important/Important.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtYWlsL2ltcG9ydGFudC9JbXBvcnRhbnQuanNvbiIsInRyYW5zZm9ybWF0aW9ucyI6IiIsImlhdCI6MTY3MTYxMDM3NCwiZXhwIjoxOTg2OTcwMzc0fQ.7Bb4Jw2jd0CyPhmq7aSDLdQMAyBZYpaCG30O03Vn_wQ`;
 
 export const getStaticProps: GetStaticProps<{
   mail: IMailLetter[];

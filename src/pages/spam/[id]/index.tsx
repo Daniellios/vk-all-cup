@@ -12,11 +12,13 @@ import formatRecievers from "../../../utils/formatRecievers";
 import formatAttachments from "../../../utils/formatAttachments";
 import type { GetStaticProps } from "next";
 
-const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/spam/Spam.json?token=${process.env.NEXT_PUBLIC_SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`;
+const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/spam/Spam.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtYWlsL3NwYW0vU3BhbS5qc29uIiwidHJhbnNmb3JtYXRpb25zIjoiIiwiaWF0IjoxNjcxNjEwNTI2LCJleHAiOjE5ODY5NzA1MjZ9.djc_B40UYDB6N0b-WFwqmaoHP-Yx7e2tXECYtWu7C3M`;
 
 export async function getStaticPaths() {
   const res = await fetch(URL);
   const mail: IMailLetter[] = await res.json();
+  console.log(mail);
+
   const paths = mail.map((letter: IMailLetter, idx: number) => ({
     params: { id: `${idx}` },
   }));

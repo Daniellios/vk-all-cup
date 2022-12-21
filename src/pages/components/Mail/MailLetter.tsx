@@ -16,14 +16,12 @@ const MailLetter: FC<IMailLetter> = ({
   bookmark,
   date,
   doc,
-  folder,
   flag,
   important,
   read,
   path,
   text,
   title,
-  to,
 }) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const [isMarked, setIsMarked] = useState<boolean>(bookmark);

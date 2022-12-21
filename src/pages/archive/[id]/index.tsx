@@ -11,7 +11,7 @@ import formatRecievers from "../../../utils/formatRecievers";
 import formatAttachments from "../../../utils/formatAttachments";
 import type { GetStaticProps } from "next";
 
-const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/archive/Archive.json?token=${process.env.NEXT_PUBLIC_SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`;
+const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/archive/Archive.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtYWlsL2FyY2hpdmUvQXJjaGl2ZS5qc29uIiwidHJhbnNmb3JtYXRpb25zIjoiIiwiaWF0IjoxNjcxNjEwMjQxLCJleHAiOjE5ODY5NzAyNDF9.7ByZ6RUlmUOnqXu5-1nzkFuKDdlnul-H2whBzMwDQ8M&t=2022-12-21T08%3A10%3A37.567Z`;
 
 export async function getStaticPaths() {
   const res = await fetch(URL);
@@ -27,6 +27,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id } = params as IParams;
   if (id) {
     const mail: IMailLetter[] = await res.json();
+    console.log(Array.isArray(mail));
+
     const index = +id;
     const singleLetter = mail[index];
     return { props: { singleLetter } };

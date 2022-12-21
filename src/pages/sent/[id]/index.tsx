@@ -11,15 +11,20 @@ import formatConverter from "../../../utils/formatConverter";
 import formatRecievers from "../../../utils/formatRecievers";
 import formatAttachments from "../../../utils/formatAttachments";
 import type { GetStaticProps } from "next";
-const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/sent/Sent.json?token=${process.env.NEXT_PUBLIC_SUPABASE_KEY}&t=2022-12-19T10%3A27%3A34.823Z`;
+
+const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/sent/Sent.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtYWlsL3NlbnQvU2VudC5qc29uIiwidHJhbnNmb3JtYXRpb25zIjoiIiwiaWF0IjoxNjcxNjEwNDY3LCJleHAiOjE5ODY5NzA0Njd9.q_ah2hgES7cTRQKHdVnOdaXYVj6ULBwbCqBS1j-Mq50&t=2022-12-21T08%3A14%3A23.452Z`;
 
 export async function getStaticPaths() {
   const res = await fetch(URL);
   const mail: IMailLetter[] = await res.json();
-  const paths = mail.map((letter: IMailLetter, idx: number) => ({
-    params: { id: `${idx}` },
-  }));
-  return { paths, fallback: false };
+  console.log(typeof mail);
+
+  if (mail) {
+    const paths = mail.map((letter: IMailLetter, idx: number) => ({
+      params: { id: `${idx}` },
+    }));
+    return { paths, fallback: false };
+  }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
