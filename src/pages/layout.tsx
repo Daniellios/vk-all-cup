@@ -1,8 +1,8 @@
 import React from "react";
 import type { ReactNode } from "react";
-import Header from "./components/Header";
+import Header from "../componets/Header";
 import type { FC } from "react";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "../componets/Sidebar";
 
 type LayoutProps = { children?: ReactNode };
 

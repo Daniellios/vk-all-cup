@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useState } from "react";
-import categories from "../../../static/categories";
-import Error from "../../../svg/Error";
-import fromatDate from "../../../utils/formatDate";
+import categories from "../../static/categories";
+import Error from "../../svg/Error";
+import fromatDate from "../../utils/formatDate";
 import AttachmentBox from "../AttachmentBox";
 import CheckBox from "../CheckBox";
 import EmailMark from "../EmailMark";

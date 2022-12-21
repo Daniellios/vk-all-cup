@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import Theme from "../../svg/Theme";
-import Compose from "../../svg/Compose";
-import Add from "../../svg/Add";
-import sideBarLinks from "../../static/sidebar";
+import Theme from "../svg/Theme";
+import Compose from "../svg/Compose";
+import Add from "../svg/Add";
+import sideBarLinks from "../static/sidebar";
 import { useRouter } from "next/router";
 import { useTheme } from "next-themes";
 

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { FC } from "react";
-import Attach from "../../svg/categories/Attach";
-import formatConverter from "../../utils/formatConverter";
+import Attach from "../svg/categories/Attach";
+import formatConverter from "../utils/formatConverter";
 import type { IDoc } from "./Mail/interfaces";
 
 interface IAttachments {

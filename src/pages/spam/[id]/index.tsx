@@ -5,7 +5,7 @@ import React from "react";
 import DownLoad from "../../../svg/DownLoad";
 import Error from "../../../svg/Error";
 
-import type { IMailLetter, IParams } from "../../components/Mail/interfaces";
+import type { IMailLetter, IParams } from "../../../componets/Mail/interfaces";
 import fromatDate from "../../../utils/formatDate";
 import formatConverter from "../../../utils/formatConverter";
 import formatRecievers from "../../../utils/formatRecievers";
@@ -17,7 +17,6 @@ const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail
 export async function getStaticPaths() {
   const res = await fetch(URL);
   const mail: IMailLetter[] = await res.json();
-  console.log(mail);
 
   const paths = mail.map((letter: IMailLetter, idx: number) => ({
     params: { id: `${idx}` },

@@ -1,8 +1,8 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import React from "react";
 
-import type { IMailLetter } from "../components/Mail/interfaces";
-import MailLetter from "../components/Mail/MailLetter";
+import type { IMailLetter } from "../../componets/Mail/interfaces";
+import MailLetter from "../../componets/Mail/MailLetter";
 const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/trash/Trash.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtYWlsL3RyYXNoL1RyYXNoLmpzb24iLCJ0cmFuc2Zvcm1hdGlvbnMiOiIiLCJpYXQiOjE2NzE2MTA1NTgsImV4cCI6MTk4Njk3MDU1OH0._JnZ-9IacPD5yypjiAidLSrMLHGtO0-Pm9pdvm8xchQ&t=2022-12-21T08%3A15%3A54.289Z`;
 
 export const getStaticProps: GetStaticProps<{

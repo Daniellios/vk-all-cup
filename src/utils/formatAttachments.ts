@@ -1,4 +1,4 @@
-import type { IDoc } from "../pages/components/Mail/interfaces";
+import type { IDoc } from "../componets/Mail/interfaces";
 
 const formatAttachments = (docs: IDoc | undefined) => {
   if (docs) {

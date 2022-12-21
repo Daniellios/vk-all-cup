@@ -1,4 +1,4 @@
-import type { IReciever } from "../pages/components/Mail/interfaces";
+import type { IReciever } from "../componets/Mail/interfaces";
 
 const formatRecievers = (recievers: IReciever[]) => {
   const recieversAmount = recievers.length;

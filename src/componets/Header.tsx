@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import LeftArrow from "../../svg/LeftArrow";
-import MainLogo from "../../svg/MainLogo";
+import LeftArrow from "../svg/LeftArrow";
+import MainLogo from "../svg/MainLogo";
 
 const Header = () => {
   const router = useRouter();

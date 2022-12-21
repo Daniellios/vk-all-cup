@@ -1,8 +1,8 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import React from "react";
 
-import type { IMailLetter } from "../components/Mail/interfaces";
-import MailLetter from "../components/Mail/MailLetter";
+import type { IMailLetter } from "../../componets/Mail/interfaces";
+import MailLetter from "../../componets/Mail/MailLetter";
 
 const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/important/Important.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtYWlsL2ltcG9ydGFudC9JbXBvcnRhbnQuanNvbiIsInRyYW5zZm9ybWF0aW9ucyI6IiIsImlhdCI6MTY3MTYxMDM3NCwiZXhwIjoxOTg2OTcwMzc0fQ.7Bb4Jw2jd0CyPhmq7aSDLdQMAyBZYpaCG30O03Vn_wQ`;
 
