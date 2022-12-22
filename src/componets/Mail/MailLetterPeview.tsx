@@ -9,7 +9,7 @@ import CheckBox from "../CheckBox";
 import EmailMark from "../EmailMark";
 import type { IMailLetter } from "./interfaces";
 
-const MailLetter: FC<IMailLetter> = ({
+const MailLetterPeview: FC<IMailLetter> = ({
   id,
   author,
   height = 49,
@@ -75,7 +75,8 @@ const MailLetter: FC<IMailLetter> = ({
           <div className="mail__letter_preview_content">
             <div className="flex w-[22%] min-w-[22%] items-center truncate  text-[12px] sm:pr-2 sm:text-[14px]">
               <p className="truncate">
-                {`${author.name} `} <br /> {`  ${author.surname}`}
+                {`${author.name} `} <br className="block sm:hidden" />{" "}
+                {`  ${author.surname}`}
               </p>
             </div>
 
@@ -133,4 +134,4 @@ const MailLetter: FC<IMailLetter> = ({
   );
 };
 
-export default MailLetter;
+export default MailLetterPeview;

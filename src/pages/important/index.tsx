@@ -2,7 +2,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import React from "react";
 
 import type { IMailLetter } from "../../componets/Mail/interfaces";
-import MailLetter from "../../componets/Mail/MailLetter";
+import MailLetterPeview from "../../componets/Mail/MailLetterPeview";
 
 const URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/sign/mail/important/Important.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtYWlsL2ltcG9ydGFudC9JbXBvcnRhbnQuanNvbiIsInRyYW5zZm9ybWF0aW9ucyI6IiIsImlhdCI6MTY3MTYxMDM3NCwiZXhwIjoxOTg2OTcwMzc0fQ.7Bb4Jw2jd0CyPhmq7aSDLdQMAyBZYpaCG30O03Vn_wQ`;
 
@@ -25,12 +25,12 @@ const Important = ({
         {mail &&
           mail.map((letter: IMailLetter, idx: number) => {
             const letterComponent = (
-              <MailLetter
+              <MailLetterPeview
                 key={"important" + idx}
                 {...letter}
                 id={counter}
                 path={"important"}
-              ></MailLetter>
+              ></MailLetterPeview>
             );
             counter++;
             return letterComponent;

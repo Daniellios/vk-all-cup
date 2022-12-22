@@ -19,8 +19,10 @@ const Sidebar = () => {
     setCurrentTheme(theme === "dark" ? "light" : "dark");
   };
 
+  const routePath = router.pathname?.split("/").length;
+
   return (
-    <div className="flex h-full w-[60px] min-w-[60px] flex-col justify-between rounded-bl-xl py-3 px-3 md:w-[232px] md:min-w-[232px] md:px-4">
+    <div className={routePath === 3 ? `sidebar hidden sm:flex` : `sidebar`}>
       <div className="flex w-full flex-col">
         <button className="mb-3 flex w-full items-center justify-center rounded-[8px] border border-[#00103D]/10 py-2 dark:border-[#999999] dark:bg-white ">
           <div className="flex h-4 w-4 items-center justify-center  md:hidden">
